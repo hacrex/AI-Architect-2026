@@ -4,6 +4,22 @@ Welcome to Day 1 of the 12-Day AI Architect 2026 series.
 
 Today is deliberately different from a typical AI tutorial.
 
+---
+
+## Table of Contents
+
+1. [What Is an AI Architect?](#1-what-is-an-ai-architect)
+2. [The Five Questions Every Architect Should Ask](#2-the-five-questions-every-architect-should-ask)
+3. [The AI Architecture Stack](#3-the-ai-architecture-stack)
+4. [Traditional Architecture vs AI Architecture](#4-traditional-architecture-vs-ai-architecture)
+5. [The Architect's Core Vocabulary](#5-the-architects-core-vocabulary)
+6. [Start Thinking in Failure Domains](#6-start-thinking-in-failure-domains)
+7. [Loose Coupling](#7-loose-coupling)
+8. [What You Should Learn Today](#8-what-you-should-learn-today)
+9. [Key Takeaways](#9-key-takeaways)
+
+> **Sample App**: See `sample-app/` for a working implementation of the Enterprise AI Knowledge Assistant.
+
 We are not going to start with prompts, LangChain, RAG, or agents.
 
 We start with the most important skill:
@@ -349,3 +365,33 @@ AI Architect
 And most importantly:
 
 **An AI Architect is a decision maker, not a technology collector.**
+
+---
+
+## 9. Key Takeaways
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     DAY 01 KEY TAKEAWAYS                        │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. AI Architect = System thinker + Decision maker              │
+│                                                                 │
+│  2. Start with 5 questions: Problem → Requirements → Options    │
+│     → Failure → Success                                         │
+│                                                                 │
+│  3. The AI Architecture Stack: Business → Application →         │
+│     AI App → Model → Data → Platform → Infrastructure          │
+│                                                                 │
+│  4. AI systems add: nondeterminism, token costs, hallucinations │
+│                                                                 │
+│  5. Always design the failure path, not just the happy path     │
+│                                                                 │
+│  6. Loose coupling = Model Gateway abstraction                  │
+│                                                                 │
+│  7. An architect is a decision maker, not a technology collector│
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+> **Next**: See Day 02 (`02-ai-ml/`) to understand AI/ML fundamentals that influence architecture decisions.

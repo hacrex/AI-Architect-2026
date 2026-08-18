@@ -1,6 +1,39 @@
 # Day 01 — Exercise
 
-Create these three artifacts.
+**Estimated Time**: 2-3 hours total
+
+| Artifact | Task | Time |
+|----------|------|------|
+| 0 | Run the sample app | 15 min |
+| 1 | Architecture diagram | 45 min |
+| 2 | Architecture notes | 45 min |
+| 3 | Answer 17 questions | 30-60 min |
+
+---
+
+## Artifact 0 — Run the Sample App
+
+Before designing your own, explore the working implementation.
+
+```bash
+cd 01-foundations/sample-app
+pip install -r requirements.txt
+cp config/.env.example config/.env
+# Edit .env with your API key
+python seed.py
+uvicorn app.main:app --reload --port 8000
+```
+
+Test it:
+```bash
+python test_app.py
+```
+
+This gives you a working reference architecture to compare against your own design.
+
+---
+
+## Artifact 1 — Architecture Diagram
 
 ---
 

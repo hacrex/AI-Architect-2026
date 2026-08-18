@@ -224,13 +224,40 @@ AI Application
 
 ## Cost Model
 
-| Component | Cost Driver | Optimization |
-|-----------|-------------|--------------|
-| LLM API | Per token | Semantic caching, model routing |
-| Embedding | Per document | Batch processing |
-| Vector DB | Per GB stored | Tiered storage |
-| Compute | Per hour | Auto-scaling |
-| Storage | Per GB | Lifecycle policies |
+### Per-Component Estimates
+
+| Component | Cost Driver | Unit Cost | Monthly (10K users) | Optimization |
+|-----------|-------------|-----------|---------------------|--------------|
+| LLM API | Per token | $0.03/1K input, $0.06/1K output | $150-450 | Semantic caching, model routing |
+| Embedding | Per document | $0.0001/doc | $50 | Batch processing |
+| Vector DB | Per GB stored | $0.25/GB | $25-100 | Tiered storage |
+| Compute | Per hour | $0.10/hr (2 instances) | $144 | Auto-scaling |
+| Storage | Per GB | $0.02/GB | $10 | Lifecycle policies |
+| Auth/API Gateway | Per request | $1/1M requests | $10 | Caching |
+
+### Total Monthly Estimate
+
+| Scenario | Users | Requests/Day | Est. Monthly Cost |
+|----------|-------|--------------|-------------------|
+| **Pilot** | 100 | 500 | $200-400 |
+| **Small** | 1,000 | 5,000 | $500-1,000 |
+| **Medium** | 10,000 | 50,000 | $1,500-3,000 |
+| **Large** | 100,000 | 500,000 | $8,000-15,000 |
+
+### Key Cost Drivers
+
+1. **LLM API calls** — 40-60% of total cost
+2. **Compute (GPU/CPU)** — 20-30% of total cost
+3. **Vector DB storage** — 5-10% of total cost
+
+### Cost Optimization Strategies
+
+| Strategy | Potential Savings |
+|----------|-------------------|
+| Model routing (simple → cheap model) | 40-60% |
+| Semantic caching (avoid re-querying) | 20-30% |
+| Prompt compression | 10-15% |
+| Batch embedding | 5-10% |
 
 ---
 

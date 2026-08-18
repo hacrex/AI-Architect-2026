@@ -139,8 +139,24 @@ For every day:
 1. Read `notes.md` for concepts
 2. Study `architecture.md` for patterns
 3. Complete `exercise.md`
-4. Produce the requested artifact
-5. Add the artifact to your personal AI Architecture portfolio
+4. Run the sample app (when available)
+5. Produce the requested artifact
+6. Add the artifact to your personal AI Architecture portfolio
+
+### Sample Apps
+
+| Day | App | Description |
+|-----|-----|-------------|
+| 01 | [`01-foundations/sample-app/`](01-foundations/sample-app/) | Enterprise AI Knowledge Assistant with RAG |
+| 02 | [`02-ai-ml/sample-app/`](02-ai-ml/sample-app/) | Model comparison & routing demo |
+| 03+ | Coming soon | LLM engineering patterns |
+
+### Time Estimates
+
+| Day | Notes | Exercise | Sample App | Total |
+|-----|-------|----------|------------|-------|
+| 01 | 45 min | 2-3 hrs | 15 min | ~3 hrs |
+| 02 | 60 min | 3-4 hrs | 20 min | ~4.5 hrs |
 
 The objective is not to memorize tools. The objective is to develop architectural judgment.
 
@@ -169,3 +185,24 @@ The architect asks:
 ## Source basis
 
 This series synthesizes the architectural progression in the accompanying roadmap material: technical and data foundations, system architecture, technology selection, scale and cost, and governance/business alignment, combined with a practical AI infrastructure and platform-engineering track.
+
+---
+
+## Progress Tracker
+
+Use this to track your progress:
+
+```
+Day 01: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
+Day 02: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
+Day 03: [ ] Notes  [ ] Architecture  [ ] Exercise
+Day 04: [ ] Notes  [ ] Architecture  [ ] Exercise
+Day 05: [ ] Notes  [ ] Architecture  [ ] Exercise
+Day 06: [ ] Notes  [ ] Architecture  [ ] Exercise
+Day 07: [ ] Notes  [ ] Architecture  [ ] Exercise
+Day 08: [ ] Notes  [ ] Exercise  [ ] ADR
+Day 09: [ ] Notes  [ ] Cost Model  [ ] Exercise
+Day 10: [ ] Notes  [ ] Architecture  [ ] Exercise
+Day 11: [ ] Notes  [ ] Threat Model  [ ] Exercise
+Day 12: [ ] Notes  [ ] Architecture  [ ] Exercise
+```
