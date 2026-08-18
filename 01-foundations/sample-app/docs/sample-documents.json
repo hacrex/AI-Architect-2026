@@ -1,0 +1,94 @@
+{
+  "documents": [
+    {
+      "id": "hr-leave-001",
+      "content": "Annual Leave Policy: Full-time employees are entitled to 20 days of annual leave per calendar year. Leave must be requested at least 2 weeks in advance through the HR portal. Unused leave can be carried over up to 5 days to the next year with manager approval.",
+      "metadata": {
+        "department": "hr",
+        "category": "leave",
+        "source": "HR-POLICY-2024-001",
+        "last_updated": "2024-01-15"
+      }
+    },
+    {
+      "id": "hr-leave-002",
+      "content": "Sick Leave Policy: Employees are entitled to 10 sick days per year. A medical certificate is required for absences exceeding 3 consecutive days. Sick leave cannot be carried over to the next year.",
+      "metadata": {
+        "department": "hr",
+        "category": "leave",
+        "source": "HR-POLICY-2024-002",
+        "last_updated": "2024-01-15"
+      }
+    },
+    {
+      "id": "hr-remote-001",
+      "content": "Remote Work Policy: Employees may work remotely up to 3 days per week with manager approval. Full remote work requires VP approval and a signed remote work agreement. All remote workers must maintain secure internet connections and use VPN for company resources.",
+      "metadata": {
+        "department": "hr",
+        "category": "remote-work",
+        "source": "HR-POLICY-2024-003",
+        "last_updated": "2024-02-01"
+      }
+    },
+    {
+      "id": "eng-access-001",
+      "content": "AWS Access Request: To request AWS access, submit a ticket through ServiceNow with: 1) Business justification, 2) Required permissions (follow least privilege), 3) Manager approval. Access is reviewed quarterly. All AWS usage must comply with the Cloud Security Policy.",
+      "metadata": {
+        "department": "engineering",
+        "category": "access",
+        "source": "ENG-POLICY-2024-001",
+        "last_updated": "2024-03-01"
+      }
+    },
+    {
+      "id": "eng-access-002",
+      "content": "Production Access: Production environment access requires: 1) Completed on-call training, 2) Two-person approval (manager + security), 3) Time-limited access (max 4 hours). All production actions are logged and audited.",
+      "metadata": {
+        "department": "engineering",
+        "category": "access",
+        "source": "ENG-POLICY-2024-002",
+        "last_updated": "2024-03-01"
+      }
+    },
+    {
+      "id": "sec-general-001",
+      "content": "Security Policy Overview: All employees must complete security training within 30 days of joining. Annual security refresher training is mandatory. Report security incidents to security@company.com within 1 hour of discovery.",
+      "metadata": {
+        "department": "general",
+        "category": "security",
+        "source": "SEC-POLICY-2024-001",
+        "last_updated": "2024-01-01"
+      }
+    },
+    {
+      "id": "sec-general-002",
+      "content": "Password Policy: Minimum 12 characters, mix of uppercase, lowercase, numbers, and symbols. Passwords must be changed every 90 days. Multi-factor authentication is required for all company systems. Use the company password manager for all credentials.",
+      "metadata": {
+        "department": "general",
+        "category": "security",
+        "source": "SEC-POLICY-2024-002",
+        "last_updated": "2024-01-01"
+      }
+    },
+    {
+      "id": "finance-expense-001",
+      "content": "Expense Policy: Expenses under $100 require receipt and manager approval. Expenses over $100 require VP approval. Submit expenses within 30 days of occurrence through the expense portal. International travel requires pre-approval from Finance.",
+      "metadata": {
+        "department": "finance",
+        "category": "expenses",
+        "source": "FIN-POLICY-2024-001",
+        "last_updated": "2024-02-15"
+      }
+    },
+    {
+      "id": "legal-data-001",
+      "content": "Data Retention Policy: Customer data is retained for 7 years after account closure. Employee data is retained for 3 years after termination. All data must be stored in approved systems. Personal devices must not contain company data without encryption.",
+      "metadata": {
+        "department": "legal",
+        "category": "data",
+        "source": "LEGAL-POLICY-2024-001",
+        "last_updated": "2024-01-10"
+      }
+    }
+  ]
+}

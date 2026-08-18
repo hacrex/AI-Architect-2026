@@ -29,6 +29,90 @@ By the end of 12 days, you should be able to reason about an AI system as an arc
 - connect architecture decisions to business outcomes
 - document decisions with diagrams, ADRs, trade-off analyses, and success metrics
 
+## Repository structure
+
+```
+ai-architect-2026/
+│
+├── README.md
+│
+├── 01-foundations/          # Technical vocabulary and architecture mindset
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── 02-ai-ml/               # AI/ML & LLM fundamentals
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── 03-llm-engineering/     # RAG, agents, tool use, context engineering
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── 04-ai-infrastructure/   # GPUs, Kubernetes, inference serving
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── 05-data-architecture/   # Data systems, streaming, vector retrieval
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── 06-mlops-platform/      # MLOps lifecycle and platform engineering
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── 07-system-architecture/ # End-to-end system design
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── 08-technology-decisions/# Build vs buy, ADRs, trade-off analysis
+│   ├── notes.md
+│   ├── exercise.md
+│   └── ADR-001-model-selection.md
+│
+├── 09-scale-finops/        # Scaling, reliability, cost modeling
+│   ├── notes.md
+│   ├── cost-model.md
+│   └── exercise.md
+│
+├── 10-observability/       # Monitoring, metrics, alerting
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── 11-security-governance/ # Threat modeling, governance, compliance
+│   ├── notes.md
+│   ├── threat-model.md
+│   └── exercise.md
+│
+├── 12-business-architecture/ # ROI, business value, portfolio
+│   ├── notes.md
+│   ├── architecture.md
+│   └── exercise.md
+│
+├── architecture/           # Architecture diagrams
+│   ├── context-diagram/
+│   ├── logical-architecture/
+│   ├── deployment-architecture/
+│   ├── data-flow/
+│   └── security-architecture/
+│
+└── capstone/               # Final project artifacts
+    ├── architecture.md
+    ├── requirements.md
+    ├── ADRs/
+    ├── cost-model.md
+    ├── threat-model.md
+    ├── observability.md
+    └── business-case.md
+```
+
 ## 12-Day Path
 
 | Day | Topic | Primary Outcome |
@@ -52,11 +136,11 @@ Spend roughly 60–120 minutes per day.
 
 For every day:
 
-1. Read the concepts.
-2. Study the architecture patterns.
-3. Complete the exercise.
-4. Produce the requested artifact.
-5. Add the artifact to your personal AI Architecture portfolio.
+1. Read `notes.md` for concepts
+2. Study `architecture.md` for patterns
+3. Complete `exercise.md`
+4. Produce the requested artifact
+5. Add the artifact to your personal AI Architecture portfolio
 
 The objective is not to memorize tools. The objective is to develop architectural judgment.
 
@@ -64,13 +148,13 @@ The objective is not to memorize tools. The objective is to develop architectura
 
 By the end of the series, aim to have:
 
-- 3–5 architecture diagrams
-- 2–3 Architecture Decision Records
-- 1 cost model
+- 3–5 architecture diagrams (in `architecture/`)
+- 2–3 Architecture Decision Records (in `08-technology-decisions/` or `capstone/ADRs/`)
+- 1 cost model (`09-scale-finops/cost-model.md` or `capstone/cost-model.md`)
 - 1 reliability/scaling plan
-- 1 AI security and governance checklist
-- 1 business-value scorecard
-- 1 complete reference architecture
+- 1 AI security and governance checklist (`11-security-governance/threat-model.md`)
+- 1 business-value scorecard (`12-business-architecture/architecture.md`)
+- 1 complete reference architecture (`capstone/architecture.md`)
 
 ## Core principle
 
