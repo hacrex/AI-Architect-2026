@@ -2,6 +2,15 @@
 
 **Estimated Time**: 3-4 hours total
 
+## Table of Contents
+
+1. [Exercise A: Model Comparison Lab](#exercise-a-model-comparison-lab)
+2. [Exercise B: Do We Need an LLM?](#exercise-b-do-we-need-an-llm)
+3. [Exercise C: RAG vs Fine-Tuning Decision](#exercise-c-rag-vs-fine-tuning-decision)
+4. [Exercise D: Model Routing Strategy](#exercise-d-model-routing-strategy)
+5. [Exercise E: Model Evaluation Framework](#exercise-e-model-evaluation-framework)
+6. [Key Takeaways](#key-takeaways)
+
 | Exercise | Task | Time |
 |----------|------|------|
 | A | Model comparison lab | 45 min |
@@ -288,3 +297,27 @@ Answer these before moving to Day 03:
 10. When would you use a managed model?
 11. What happens to architecture when inference traffic increases 10x?
 12. Why should an enterprise consider a model gateway?
+
+---
+
+## Key Takeaways
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              DAY 02 EXERCISE KEY TAKEAWAYS                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. Model comparison reveals trade-offs between providers       │
+│                                                                 │
+│  2. Not every problem needs an LLM — know the alternatives      │
+│                                                                 │
+│  3. RAG for knowledge, fine-tuning for behavior                 │
+│                                                                 │
+│  4. Model routing saves cost while maintaining quality          │
+│                                                                 │
+│  5. Evaluation frameworks make model selection objective        │
+│                                                                 │
+│  6. Always measure before deciding — don't guess                │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```

@@ -2,6 +2,14 @@
 
 **Estimated Time**: 2-3 hours total
 
+## Table of Contents
+
+1. [Artifact 0 — Run the Sample App](#artifact-0--run-the-sample-app)
+2. [Artifact 1 — Architecture Diagram](#artifact-1--architecture-diagram)
+3. [Artifact 2 — Architecture Notes](#artifact-2--architecture-notes)
+4. [Artifact 3 — Architecture Questions](#artifact-3--architecture-questions)
+5. [Key Takeaways](#key-takeaways)
+
 | Artifact | Task | Time |
 |----------|------|------|
 | 0 | Run the sample app | 15 min |
@@ -30,10 +38,6 @@ python test_app.py
 ```
 
 This gives you a working reference architecture to compare against your own design.
-
----
-
-## Artifact 1 — Architecture Diagram
 
 ---
 
@@ -137,3 +141,27 @@ Don't search for the "correct answer." Think first. That's the point of this exe
 ## Deliverable
 
 One architecture diagram + one-page architecture notes + answers to 17 questions.
+
+---
+
+## Key Takeaways
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              DAY 01 EXERCISE KEY TAKEAWAYS                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. Architecture diagrams communicate system design visually    │
+│                                                                 │
+│  2. Architecture notes document decisions and rationale         │
+│                                                                 │
+│  3. Questions force you to think about failure, security, cost  │
+│                                                                 │
+│  4. Start simple, add complexity as requirements demand         │
+│                                                                 │
+│  5. Every component has trade-offs — document them              │
+│                                                                 │
+│  6. Design the architecture you can defend                      │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```

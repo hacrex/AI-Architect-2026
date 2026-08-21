@@ -2,6 +2,16 @@
 
 **Estimated Time**: 4-5 hours total
 
+## Table of Contents
+
+1. [Experiment 1 — Model Serving](#experiment-1--model-serving)
+2. [Experiment 2 — Concurrency](#experiment-2--concurrency)
+3. [Experiment 3 — Model Size](#experiment-3--model-size)
+4. [Experiment 4 — Managed vs Self-Hosted](#experiment-4--managed-vs-self-hosted)
+5. [Day 04 Architect Questions](#day-04-architect-questions)
+6. [Day 04 Deliverables](#day-04-deliverables)
+7. [Key Takeaways](#key-takeaways)
+
 | Exercise | Task | Time |
 |----------|------|------|
 | 1 | Model serving experiment | 60 min |
@@ -172,3 +182,29 @@ After completing Day 04, you should be able to:
 - Make informed decisions about managed vs self-hosted inference
 - Design for scalability and reliability
 - Understand the cost implications of AI infrastructure
+
+---
+
+## Key Takeaways
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              DAY 04 EXERCISE KEY TAKEAWAYS                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. Measure before making infrastructure decisions              │
+│                                                                 │
+│  2. GPU memory is often the binding constraint                  │
+│                                                                 │
+│  3. Batching improves throughput but affects latency            │
+│                                                                 │
+│  4. Model size directly impacts infrastructure requirements     │
+│                                                                 │
+│  5. Managed vs self-hosted depends on scale and control needs   │
+│                                                                 │
+│  6. Capacity planning prevents surprise costs                   │
+│                                                                 │
+│  7. Always have fallback mechanisms for production systems      │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```

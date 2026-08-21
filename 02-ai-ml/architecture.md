@@ -2,11 +2,20 @@
 
 > **Reference Document**: This file contains unique decision frameworks and matrices. For full explanations, see `notes.md`.
 
+## Table of Contents
+
+1. [Model Selection Checklist](#1-model-selection-checklist)
+2. [Decision Speed Run](#2-decision-speed-run)
+3. [Cost Quick Reference](#3-cost-quick-reference)
+4. [RAG vs Fine-Tuning Quick Decision](#4-rag-vs-fine-tuning-quick-decision)
+5. [Context Window Budget Rule](#5-context-window-budget-rule)
+6. [Architecture Pattern Quick Reference](#6-architecture-pattern-quick-reference)
+7. [Monthly Cost Estimation Template](#7-monthly-cost-estimation-template)
+8. [Key Takeaways](#8-key-takeaways)
+
 ---
 
-## Quick Reference Tables
-
-### Model Selection Checklist
+## 1. Model Selection Checklist
 
 Use this when evaluating any model:
 
@@ -21,7 +30,7 @@ Use this when evaluating any model:
 
 ---
 
-### Decision Speed Run
+## 2. Decision Speed Run
 
 | Question | Answer |
 |----------|--------|
@@ -36,7 +45,7 @@ Use this when evaluating any model:
 
 ---
 
-### Cost Quick Reference
+## 3. Cost Quick Reference
 
 | Model | Input/1K | Output/1K | Best For |
 |-------|----------|-----------|----------|
@@ -49,7 +58,7 @@ Use this when evaluating any model:
 
 ---
 
-### RAG vs Fine-Tuning Quick Decision
+## 4. RAG vs Fine-Tuning Quick Decision
 
 ```
 ┌─────────────────────────────────────────┐
@@ -64,7 +73,7 @@ Use this when evaluating any model:
 
 ---
 
-### Context Window Budget Rule
+## 5. Context Window Budget Rule
 
 ```
 Total Context Window (e.g., 128K tokens)
@@ -77,7 +86,7 @@ Total Context Window (e.g., 128K tokens)
 
 ---
 
-### Architecture Pattern Quick Reference
+## 6. Architecture Pattern Quick Reference
 
 | Pattern | When to Use | Trade-off |
 |---------|-------------|-----------|
@@ -89,7 +98,7 @@ Total Context Window (e.g., 128K tokens)
 
 ---
 
-### Monthly Cost Estimation Template
+## 7. Monthly Cost Estimation Template
 
 ```
 Requests/month: ___________
@@ -111,3 +120,29 @@ See `notes.md` for detailed explanations of:
 - Managed vs Self-Hosted Decision Matrix (Section 17)
 - Token Economics (Section 6)
 - Model Routing Architecture (Section 5)
+
+---
+
+## 8. Key Takeaways
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              DAY 02 ARCHITECTURE KEY TAKEAWAYS                  │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. Model selection = quality + cost + latency + privacy        │
+│                                                                 │
+│  2. Use decision matrices to avoid analysis paralysis           │
+│                                                                 │
+│  3. RAG for knowledge, fine-tuning for behavior                 │
+│                                                                 │
+│  4. Context window is a budget — allocate carefully             │
+│                                                                 │
+│  5. Model routing saves 40-60% at scale                         │
+│                                                                 │
+│  6. Always have a fallback plan                                 │
+│                                                                 │
+│  7. Cost must be modeled before architecture is finalized       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```

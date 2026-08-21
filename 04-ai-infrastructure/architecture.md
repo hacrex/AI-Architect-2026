@@ -2,9 +2,20 @@
 
 > **Building on Day 03**: Yesterday we designed the AI application layer with RAG, agents, and model routing. Today we design the infrastructure that makes it production-ready.
 
+## Table of Contents
+
+1. [Enterprise AI Knowledge Assistant](#1-enterprise-ai-knowledge-assistant)
+2. [Full Stack View](#2-full-stack-view)
+3. [Deployment Comparison](#3-deployment-comparison)
+4. [Comparison Matrix](#4-comparison-matrix)
+5. [Capacity Plan](#5-capacity-plan)
+6. [Infrastructure Decision Record](#6-infrastructure-decision-record)
+7. [Architectural Trade-offs](#7-architectural-trade-offs)
+8. [Key Takeaways](#8-key-takeaways)
+
 ---
 
-## Day 04 Enterprise AI Knowledge Assistant
+## 1. Enterprise AI Knowledge Assistant
 
 ### Infrastructure Diagram
 
@@ -221,3 +232,29 @@ Multi-model → More capabilities → More complexity
 ### Availability vs Cost
 
 Redundancy → Higher availability → Higher cost
+
+---
+
+## 8. Key Takeaways
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              DAY 04 ARCHITECTURE KEY TAKEAWAYS                  │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. Infrastructure decisions must align with workload patterns  │
+│                                                                 │
+│  2. Managed vs self-hosted = cost vs control trade-off          │
+│                                                                 │
+│  3. Hybrid architecture balances flexibility and optimization   │
+│                                                                 │
+│  4. Capacity planning drives GPU and scaling decisions          │
+│                                                                 │
+│  5. Every architectural choice has trade-offs — document them   │
+│                                                                 │
+│  6. Design for failure — have fallback mechanisms ready         │
+│                                                                 │
+│  7. Cost model must be validated before production deployment   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```

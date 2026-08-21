@@ -512,7 +512,7 @@ Multi-cloud is an architectural decision, not a checkbox.
 
 ---
 
-## Day 04 Architecture Exercise
+## 20. Day 04 Architecture Exercise
 
 Let's evolve our Enterprise AI Knowledge Assistant.
 
@@ -577,7 +577,7 @@ Models          │
 
 ---
 
-## Day 04 Hands-On Labs
+## 21. Day 04 Hands-On Labs
 
 You don't need to build a huge GPU cluster today. Run smaller experiments.
 
@@ -656,7 +656,7 @@ Answer these before moving on:
 
 ---
 
-## Day 04 Deliverables
+## 22. Day 04 Deliverables
 
 By the end of today, create:
 

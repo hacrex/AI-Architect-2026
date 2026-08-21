@@ -1,6 +1,19 @@
 # Day 01 — Architecture: AI Knowledge Assistant
 
-## The Problem
+## Table of Contents
+
+1. [The Problem](#1-the-problem)
+2. [Requirements](#2-requirements)
+3. [Architecture Evolution](#3-architecture-evolution)
+4. [Component Details](#4-component-details)
+5. [Data Flow](#5-data-flow)
+6. [Failure Scenarios](#6-failure-scenarios)
+7. [Scaling Considerations](#7-scaling-considerations)
+8. [Security Architecture](#8-security-architecture)
+9. [Cost Model](#9-cost-model)
+10. [Key Takeaways](#10-key-takeaways)
+
+## 1. The Problem
 
 Design an internal AI Knowledge Assistant for a company.
 
@@ -313,3 +326,29 @@ An enterprise AI assistant used by 10,000 employees.
 - Cost monitoring
 
 **Don't design the perfect architecture. Design the architecture you can defend.**
+
+---
+
+## 10. Key Takeaways
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              DAY 01 ARCHITECTURE KEY TAKEAWAYS                  │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. Start with requirements, not technology choices             │
+│                                                                 │
+│  2. Architecture evolves: Basic → Concerns → Production         │
+│                                                                 │
+│  3. Every component creates architectural decisions             │
+│                                                                 │
+│  4. Failure scenarios drive resilience design                   │
+│                                                                 │
+│  5. Security is not an afterthought — design it in              │
+│                                                                 │
+│  6. Cost model must be understood before scaling                │
+│                                                                 │
+│  7. Design the architecture you can defend, not the perfect one │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
