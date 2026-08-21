@@ -15,6 +15,8 @@
 
 Today's exercises focus on **data ingestion**, **chunking strategies**, **security at the data layer**, and **data architecture design**. You'll build the data pipeline that feeds your AI system.
 
+> **Sample App**: See `sample-app/` for a working data pipeline implementation with chunking, metadata extraction, and permission-filtered retrieval.
+
 ---
 
 ## Exercise A: Build a RAG Data Pipeline
