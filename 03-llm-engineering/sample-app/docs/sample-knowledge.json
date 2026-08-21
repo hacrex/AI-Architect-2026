@@ -1,0 +1,44 @@
+[
+  {
+    "id": "doc-001",
+    "title": "Leave Policy",
+    "category": "hr",
+    "content": "Employees are entitled to 20 days annual leave, 10 days sick leave, and 5 personal days per year. Leave requests must be submitted through the HR portal at least 2 weeks in advance for planned leave. Emergency leave can be reported to your manager directly.",
+    "last_updated": "2024-01-15"
+  },
+  {
+    "id": "doc-002",
+    "title": "Remote Work Policy",
+    "category": "policies",
+    "content": "The company follows a hybrid work model: 3 days in office (Tuesday, Wednesday, Thursday), 2 days remote (Monday, Friday). Fully remote arrangements require VP approval and are subject to role suitability assessment.",
+    "last_updated": "2024-01-20"
+  },
+  {
+    "id": "doc-003",
+    "title": "Expense Policy",
+    "category": "policies",
+    "content": "Expenses under $100 require manager approval. Expenses over $100 require director approval. All expense reports must be submitted within 30 days of the expense. Receipts are required for all expenses over $25.",
+    "last_updated": "2024-02-01"
+  },
+  {
+    "id": "doc-004",
+    "title": "Onboarding Checklist",
+    "category": "onboarding",
+    "content": "Day 1: IT setup (laptop, accounts), badge collection, welcome kit. Week 1: Team introductions, mandatory training sessions, role-specific onboarding. Month 1: Performance goals setup, mentor assignment.",
+    "last_updated": "2024-01-10"
+  },
+  {
+    "id": "doc-005",
+    "title": "Refund Policy",
+    "category": "billing",
+    "content": "Items can be returned within 30 days of delivery for a full refund. Electronics have a 15-day return window. Items must be in original packaging. Custom orders are non-refundable. Refunds are processed within 5-7 business days.",
+    "last_updated": "2024-02-05"
+  },
+  {
+    "id": "doc-006",
+    "title": "Security Policy",
+    "category": "general",
+    "content": "All employees must complete annual security training. Passwords must be changed every 90 days. Multi-factor authentication is required for all systems. Report security incidents immediately to the Security team.",
+    "last_updated": "2024-01-25"
+  }
+]

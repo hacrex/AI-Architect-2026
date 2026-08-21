@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inference-server
+  namespace: ai-inference
+  labels:
+    app: inference-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: inference-server
+  template:
+    metadata:
+      labels:
+        app: inference-server
+    spec:
+      containers:
+        - name: inference-server
+          image: ai-inference:latest
+          ports:
+            - containerPort: 8003
+              name: http
+          env:
+            - name: MODEL_NAME
+              value: "gpt2"
+            - name: MODEL_DEVICE
+              value: "cpu"
+            - name: MAX_TOKENS
+              value: "2048"
+            - name: BATCH_SIZE
+              value: "16"
+            - name: ENABLE_METRICS
+              value: "true"
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1000m"
+            limits:
+              memory: "4Gi"
+              cpu: "2000m"
+              # nvidia.com/gpu: 1  # Uncomment for GPU nodes
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8003
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8003
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+      # nodeSelector:
+      #   accelerator: nvidia-tesla-t4  # Uncomment for GPU nodes
