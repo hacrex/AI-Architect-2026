@@ -9,10 +9,11 @@ Complete requirements extracted from all 12 days, architecture folder, and capst
 1. [Project Overview](#1-project-overview)
 2. [User Requirements](#2-user-requirements)
 3. [Hardware Requirements](#3-hardware-requirements)
-4. [API Requirements](#4-api-requirements)
-5. [Nvidia NIM Free API](#5-nvidia-nim-free-api)
-6. [OpenRouter Free API](#6-openrouter-free-api)
-7. [Functional Requirements by Domain](#7-functional-requirements-by-domain)
+4. [Basic Laptop Setup (No GPU)](#4-basic-laptop-setup-no-gpu)
+5. [API Requirements](#5-api-requirements)
+6. [Nvidia NIM Free API](#6-nvidia-nim-free-api)
+7. [OpenRouter Free API](#7-openrouter-free-api)
+8. [Functional Requirements by Domain](#8-functional-requirements-by-domain)
 8. [Non-Functional Requirements](#8-non-functional-requirements)
 9. [Deliverables by Day](#9-deliverables-by-day)
 10. [Sample App Requirements](#10-sample-app-requirements)
@@ -201,7 +202,129 @@ Total VRAM = (Model Weights + KV Cache + Overhead) / 0.9
 
 ---
 
-## 4. API Requirements
+## 4. Basic Laptop Setup (No GPU)
+
+### 4.1 What You Can Do With a Basic Laptop
+
+A laptop with 8-16 GB RAM, no dedicated GPU, and Python installed is enough to complete this entire 12-day series. You do NOT need expensive hardware to learn AI architecture.
+
+### 4.2 Minimum Hardware Requirements
+
+| Component | Minimum | Recommended | Notes |
+|-----------|---------|-------------|-------|
+| CPU | Any modern x64 | Intel i5/AMD Ryzen 5+ | For running Python, FastAPI, embedding |
+| RAM | 8 GB | 16 GB | More RAM = more comfort |
+| Storage | 50 GB free | 100 GB free | For Python packages, sample data |
+| GPU | None required | None required | All inference via free APIs |
+| Internet | Required | Required | For API calls to NIM/OpenRouter |
+| OS | Windows/Mac/Linux | Any | Python 3.10+ |
+
+### 4.3 What Runs Locally vs What Runs in the Cloud
+
+| Component | Runs Locally (Laptop) | Runs in Cloud (Free API) |
+|-----------|----------------------|--------------------------|
+| Python code | Yes | - |
+| FastAPI server | Yes | - |
+| Sample app logic | Yes | - |
+| In-memory vector store | Yes | - |
+| Document processing | Yes | - |
+| LLM inference | No | Nvidia NIM / OpenRouter |
+| Embedding generation | No | Nvidia NIM (Snowflake Arctic) |
+| Model routing | Yes (logic only) | - |
+| Observability | Yes | - |
+| Security | Yes | - |
+
+### 4.4 Free API Setup (Zero Cost)
+
+**Step 1: Get Nvidia NIM API Key**
+1. Go to https://build.nvidia.com
+2. Sign up for free NVIDIA Developer Program
+3. Get API key (starts with `nvapi-`)
+4. Free tier: Rate-limited, prototyping use
+
+**Step 2: Get OpenRouter API Key**
+1. Go to https://openrouter.ai
+2. Create free account
+3. Get API key (starts with `sk-or-`)
+4. Free tier: 50 req/day (no credits) or 1,000 req/day ($10+ credits)
+
+**Step 3: Configure Your Environment**
+
+```bash
+# Create .env file
+NVIDIA_API_KEY=nvapi-your-key-here
+OPENROUTER_API_KEY=sk-or-your-key-here
+```
+
+### 4.5 Running the Sample Apps Locally
+
+```bash
+# Clone the repo
+git clone https://github.com/hacrex/AI-Architect-2026.git
+cd AI-Architect-2026
+
+# Install Python dependencies
+pip install fastapi uvicorn pydantic python-dotenv
+
+# Run any sample app
+cd 07-system-architecture/sample-app
+python test_system.py
+
+# Or start the API server
+uvicorn app.main:app --reload --port 8080
+```
+
+### 4.6 What You Cannot Do Locally (Without GPU)
+
+| Task | Why | Alternative |
+|------|-----|-------------|
+| Run 7B+ LLM locally | Needs 16+ GB VRAM | Use free APIs |
+| Fine-tune models | Needs GPU + data | Use prompt engineering |
+| Train embeddings | Needs GPU | Use NIM free embeddings |
+| Run vLLM/TGI | Needs GPU | Use API endpoints |
+| Benchmark inference | Needs GPU | Use API response times |
+
+### 4.7 Cost Comparison
+
+| Setup | Hardware Cost | API Cost | Total Monthly |
+|-------|--------------|----------|---------------|
+| Basic laptop + free APIs | $0 | $0 | $0 |
+| Basic laptop + $10 OpenRouter credits | $0 | $10 | $10 |
+| Cloud GPU (A10G) | $0 | $400 | $400 |
+| Cloud GPU (A100) | $0 | $2,000 | $2,000 |
+| Self-hosted (RTX 4090) | $1,600 one-time | $50 electricity | $50/mo |
+
+### 4.8 Learning Path for Basic Laptop Users
+
+| Day | What You Build | Hardware Needed |
+|-----|---------------|-----------------|
+| 01 | Architecture notes + diagrams | Laptop only |
+| 02 | Model comparison using free APIs | Laptop + internet |
+| 03 | RAG pipeline (in-memory vector DB) | Laptop only |
+| 04 | Architecture diagrams (no GPU needed) | Laptop only |
+| 05 | Data pipeline with in-memory storage | Laptop only |
+| 06 | MLOps concepts + platform design | Laptop only |
+| 07 | Complete system with free API inference | Laptop + internet |
+| 08 | ADRs and trade-off analysis | Laptop only |
+| 09 | Cost model (using free tier pricing) | Laptop only |
+| 10 | Observability dashboard design | Laptop only |
+| 11 | Security threat model | Laptop only |
+| 12 | Business case and portfolio | Laptop only |
+
+### 4.9 Recommended Free Model Strategy
+
+For a basic laptop user with no budget:
+
+1. **Primary:** OpenRouter free models (`openrouter/free` auto-router)
+2. **Fallback:** Nvidia NIM free endpoints (Llama 3.1 8B)
+3. **Embeddings:** Nvidia NIM Snowflake Arctic Embed (free)
+4. **All other components:** Run locally in Python
+
+This gives you a complete AI system architecture to learn with at zero cost.
+
+---
+
+## 5. API Requirements
 
 ### 4.1 API Gateway Endpoints
 
@@ -301,7 +424,7 @@ GET /api/v1/metrics
 
 ---
 
-## 5. Nvidia NIM Free API
+## 6. Nvidia NIM Free API
 
 ### 5.1 Overview
 
@@ -400,7 +523,7 @@ NIM_ROUTE = ModelRoute(
 
 ---
 
-## 6. OpenRouter Free API
+## 7. OpenRouter Free API
 
 ### 6.1 Overview
 
@@ -526,7 +649,7 @@ def call_with_retry(client, max_retries=3):
 
 ---
 
-## 7. Functional Requirements by Domain
+## 8. Functional Requirements by Domain
 
 ### 2.1 AI Application Layer
 
@@ -622,9 +745,9 @@ def call_with_retry(client, max_retries=3):
 
 ---
 
-## 8. Non-Functional Requirements
+## 9. Non-Functional Requirements
 
-### 8.1 Performance
+### 9.1 Performance
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -634,7 +757,7 @@ def call_with_retry(client, max_retries=3):
 | NFR-P-04 | Throughput | Support 10,000 concurrent users | Day 01, 09 |
 | NFR-P-05 | Inference throughput | Scale to 100 req/sec | Day 04, 09 |
 
-### 8.2 Availability
+### 9.2 Availability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -643,7 +766,7 @@ def call_with_retry(client, max_retries=3):
 | NFR-A-03 | Data availability | Vector DB redundancy | Day 05, 07 |
 | NFR-A-04 | Disaster recovery | RTO < 1 hour, RPO < 5 minutes | Day 09 |
 
-### 8.3 Security
+### 9.3 Security
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -655,7 +778,7 @@ def call_with_retry(client, max_retries=3):
 | NFR-S-06 | Prompt injection | Detection and prevention | Day 11 |
 | NFR-S-07 | Data leakage | Prevent sensitive data in prompts | Day 01, 11 |
 
-### 8.4 Scalability
+### 9.4 Scalability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -665,7 +788,7 @@ def call_with_retry(client, max_retries=3):
 | NFR-SC-04 | Horizontal scaling | Add nodes without downtime | Day 04, 09 |
 | NFR-SC-05 | GPU scaling | Autoscale based on queue depth | Day 04, 09 |
 
-### 8.5 Cost
+### 9.5 Cost
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -675,7 +798,7 @@ def call_with_retry(client, max_retries=3):
 | NFR-C-04 | Cost visibility | Per user, per model, per department | Day 09, 10 |
 | NFR-C-05 | Budget alerts | Notify at 80% and 100% of budget | Day 09, 10 |
 
-### 8.6 Reliability
+### 9.6 Reliability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -687,7 +810,7 @@ def call_with_retry(client, max_retries=3):
 
 ---
 
-## 9. Deliverables by Day
+## 10. Deliverables by Day
 
 ### Day 01 — Foundations
 
@@ -783,7 +906,7 @@ def call_with_retry(client, max_retries=3):
 
 ---
 
-## 10. Sample App Requirements
+## 11. Sample App Requirements
 
 ### Days with Sample Apps
 
@@ -808,7 +931,7 @@ def call_with_retry(client, max_retries=3):
 
 ---
 
-## 11. Architecture Artifact Requirements
+## 12. Architecture Artifact Requirements
 
 ### Diagram Types Required
 
@@ -837,7 +960,7 @@ Minimum ADRs:
 
 ---
 
-## 12. Portfolio Completion Checklist
+## 13. Portfolio Completion Checklist
 
 ### Architecture Artifacts
 
@@ -874,7 +997,7 @@ Minimum ADRs:
 
 ---
 
-## 13. Architect Competency Requirements
+## 14. Architect Competency Requirements
 
 ### Knowledge Domains
 
