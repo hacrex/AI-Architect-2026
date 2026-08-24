@@ -7,13 +7,14 @@ Complete requirements extracted from all 12 days, architecture folder, and capst
 ## Table of Contents
 
 1. [Project Overview](#1-project-overview)
-2. [Functional Requirements by Domain](#2-functional-requirements-by-domain)
-3. [Non-Functional Requirements](#3-non-functional-requirements)
-4. [Deliverables by Day](#4-deliverables-by-day)
-5. [Sample App Requirements](#5-sample-app-requirements)
-6. [Architecture Artifact Requirements](#6-architecture-artifact-requirements)
-7. [Portfolio Completion Checklist](#7-portfolio-completion-checklist)
-8. [Architect Competency Requirements](#8-architect-competency-requirements)
+2. [User Requirements](#2-user-requirements)
+3. [Functional Requirements by Domain](#3-functional-requirements-by-domain)
+4. [Non-Functional Requirements](#4-non-functional-requirements)
+5. [Deliverables by Day](#5-deliverables-by-day)
+6. [Sample App Requirements](#6-sample-app-requirements)
+7. [Architecture Artifact Requirements](#7-architecture-artifact-requirements)
+8. [Portfolio Completion Checklist](#8-portfolio-completion-checklist)
+9. [Architect Competency Requirements](#9-architect-competency-requirements)
 
 ---
 
@@ -50,7 +51,81 @@ By completion, the learner can:
 
 ---
 
-## 2. Functional Requirements by Domain
+## 2. User Requirements
+
+### 2.1 End Users
+
+| User Type | Description | Primary Needs |
+|-----------|-------------|---------------|
+| Employee (10,000) | General staff across departments | Find answers, understand policies, search knowledge |
+| Engineering | Technical staff | Access technical docs, architecture guides, API standards |
+| HR | Human resources | Access HR policies, benefits, onboarding materials |
+| Finance | Finance team | Expense policies, budget information |
+| Legal/Compliance | Legal staff | Privacy policies, compliance documentation |
+| Security | IT security | Security docs, data classification, incident procedures |
+| Administrators | System admins | Manage users, models, access, monitoring |
+| Developers | AI/app developers | Build, test, deploy AI applications |
+
+### 2.2 User Stories
+
+| ID | Story | Priority | Source |
+|----|-------|----------|--------|
+| US-01 | As an employee, I want to ask questions in natural language and get accurate answers with sources so I can find information quickly | High | Day 01, 03 |
+| US-02 | As an employee, I want to see which documents the answer came from so I can verify correctness | High | Day 01 |
+| US-03 | As an employee, I want to ask follow-up questions in conversation so I can refine my understanding | Medium | Day 03 |
+| US-04 | As an employee, I want the system to respond within 2 seconds for simple questions so my workflow is not interrupted | High | Day 01, 09 |
+| US-05 | As an employee, I want to access only documents I am authorized to see so sensitive information is protected | High | Day 05, 07 |
+| US-06 | As an engineer, I want to search technical documentation and architecture guides so I can follow standards | High | Day 01, 05 |
+| US-07 | As an HR user, I want to find policy information without searching through multiple systems | Medium | Day 01 |
+| US-08 | As an administrator, I want to see who is using the system and what they are asking so I can improve content | Medium | Day 10 |
+| US-09 | As a developer, I want the system to be available 99.9% of the time so I can rely on it for my work | High | Day 01, 07 |
+| US-10 | As an employee, I want to get help even when the primary AI model is unavailable so I am not blocked | High | Day 02, 07 |
+| US-11 | As a security user, I want all queries logged for audit purposes so we maintain compliance | High | Day 07, 11 |
+| US-12 | As an administrator, I want to control which model is used for different query types to optimize cost | Medium | Day 02, 09 |
+| US-13 | As an employee, I want the AI to understand my department context so answers are relevant to my role | Medium | Day 03, 05 |
+| US-14 | As a manager, I want to see cost and usage reports per department so I can manage budget | Medium | Day 09, 10 |
+| US-15 | As an employee, I want to be told when the AI is unsure rather than getting a wrong answer | High | Day 01, 11 |
+
+### 2.3 User Experience Requirements
+
+| ID | Requirement | Target | Source |
+|----|-------------|--------|--------|
+| UX-01 | Response time for simple queries | < 2 seconds | Day 01, 09 |
+| UX-02 | Response time for complex RAG queries | < 5 seconds | Day 09 |
+| UX-03 | Source attribution | Every answer includes sources | Day 01 |
+| UX-04 | Confidence indication | System indicates when uncertain | Day 01, 11 |
+| UX-05 | Conversation context | Maintain context across follow-ups | Day 03 |
+| UX-06 | Graceful degradation | Cached or partial answers when components fail | Day 07 |
+| UX-07 | Error messages | Clear, actionable error messages | Day 06, 07 |
+| UX-08 | Accessibility | Standard web accessibility compliance | Day 01 |
+
+### 2.4 User Access Requirements
+
+| Role | Document Access | Model Access | Agent Access | Rate Limit |
+|------|----------------|--------------|--------------|------------|
+| Employee | Public docs | Standard models | Search only | 100 req/min |
+| Engineering | Public + Engineering docs | Standard + self-hosted | Search + database | 200 req/min |
+| HR | Public + HR docs | Standard models | Search only | 100 req/min |
+| Finance | Public + Finance docs | Standard models | Search only | 100 req/min |
+| Security | All docs | All models | Search + security tools | 200 req/min |
+| Admin | All docs | All models | All tools | 500 req/min |
+
+### 2.5 User Acceptance Criteria
+
+| Scenario | Expected Behavior | Priority |
+|----------|-------------------|----------|
+| User asks "What is our remote work policy?" | Returns answer with source link to HR policy doc | High |
+| User asks follow-up question | Maintains conversation context | Medium |
+| User asks about unauthorized document | Returns "I don't have access to that information" | High |
+| Primary model is down | System uses fallback model, user gets answer | High |
+| User asks something the AI is unsure about | System indicates low confidence | High |
+| User asks complex multi-step question | Agent uses tools, returns synthesized answer | Medium |
+| System is under heavy load | Responses may be slower but still available | Medium |
+| User queries at 2am | System available (automated, no human needed) | Low |
+
+---
+
+## 3. Functional Requirements by Domain
 
 ### 2.1 AI Application Layer
 
@@ -146,9 +221,9 @@ By completion, the learner can:
 
 ---
 
-## 3. Non-Functional Requirements
+## 4. Non-Functional Requirements
 
-### 3.1 Performance
+### 4.1 Performance
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -158,7 +233,7 @@ By completion, the learner can:
 | NFR-P-04 | Throughput | Support 10,000 concurrent users | Day 01, 09 |
 | NFR-P-05 | Inference throughput | Scale to 100 req/sec | Day 04, 09 |
 
-### 3.2 Availability
+### 4.2 Availability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -167,7 +242,7 @@ By completion, the learner can:
 | NFR-A-03 | Data availability | Vector DB redundancy | Day 05, 07 |
 | NFR-A-04 | Disaster recovery | RTO < 1 hour, RPO < 5 minutes | Day 09 |
 
-### 3.3 Security
+### 4.3 Security
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -179,7 +254,7 @@ By completion, the learner can:
 | NFR-S-06 | Prompt injection | Detection and prevention | Day 11 |
 | NFR-S-07 | Data leakage | Prevent sensitive data in prompts | Day 01, 11 |
 
-### 3.4 Scalability
+### 4.4 Scalability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -189,7 +264,7 @@ By completion, the learner can:
 | NFR-SC-04 | Horizontal scaling | Add nodes without downtime | Day 04, 09 |
 | NFR-SC-05 | GPU scaling | Autoscale based on queue depth | Day 04, 09 |
 
-### 3.5 Cost
+### 4.5 Cost
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -199,7 +274,7 @@ By completion, the learner can:
 | NFR-C-04 | Cost visibility | Per user, per model, per department | Day 09, 10 |
 | NFR-C-05 | Budget alerts | Notify at 80% and 100% of budget | Day 09, 10 |
 
-### 3.6 Reliability
+### 4.6 Reliability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -211,7 +286,7 @@ By completion, the learner can:
 
 ---
 
-## 4. Deliverables by Day
+## 5. Deliverables by Day
 
 ### Day 01 — Foundations
 
@@ -307,7 +382,7 @@ By completion, the learner can:
 
 ---
 
-## 5. Sample App Requirements
+## 6. Sample App Requirements
 
 ### Days with Sample Apps
 
@@ -332,7 +407,7 @@ By completion, the learner can:
 
 ---
 
-## 6. Architecture Artifact Requirements
+## 7. Architecture Artifact Requirements
 
 ### Diagram Types Required
 
@@ -361,7 +436,7 @@ Minimum ADRs:
 
 ---
 
-## 7. Portfolio Completion Checklist
+## 8. Portfolio Completion Checklist
 
 ### Architecture Artifacts
 
@@ -398,7 +473,7 @@ Minimum ADRs:
 
 ---
 
-## 8. Architect Competency Requirements
+## 9. Architect Competency Requirements
 
 ### Knowledge Domains
 
