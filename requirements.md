@@ -8,13 +8,17 @@ Complete requirements extracted from all 12 days, architecture folder, and capst
 
 1. [Project Overview](#1-project-overview)
 2. [User Requirements](#2-user-requirements)
-3. [Functional Requirements by Domain](#3-functional-requirements-by-domain)
-4. [Non-Functional Requirements](#4-non-functional-requirements)
-5. [Deliverables by Day](#5-deliverables-by-day)
-6. [Sample App Requirements](#6-sample-app-requirements)
-7. [Architecture Artifact Requirements](#7-architecture-artifact-requirements)
-8. [Portfolio Completion Checklist](#8-portfolio-completion-checklist)
-9. [Architect Competency Requirements](#9-architect-competency-requirements)
+3. [Hardware Requirements](#3-hardware-requirements)
+4. [API Requirements](#4-api-requirements)
+5. [Nvidia NIM Free API](#5-nvidia-nim-free-api)
+6. [OpenRouter Free API](#6-openrouter-free-api)
+7. [Functional Requirements by Domain](#7-functional-requirements-by-domain)
+8. [Non-Functional Requirements](#8-non-functional-requirements)
+9. [Deliverables by Day](#9-deliverables-by-day)
+10. [Sample App Requirements](#10-sample-app-requirements)
+11. [Architecture Artifact Requirements](#11-architecture-artifact-requirements)
+12. [Portfolio Completion Checklist](#12-portfolio-completion-checklist)
+13. [Architect Competency Requirements](#13-architect-competency-requirements)
 
 ---
 
@@ -125,7 +129,404 @@ By completion, the learner can:
 
 ---
 
-## 3. Functional Requirements by Domain
+## 3. Hardware Requirements
+
+### 3.1 GPU VRAM Formula
+
+```
+Total VRAM = (Model Weights + KV Cache + Overhead) / 0.9
+```
+
+- **Model Weights** = Parameters x Bytes per parameter (fixed)
+- **KV Cache** = Grows with context length x concurrent users
+- **Overhead** = 1-3 GB (CUDA context + framework buffers)
+- **0.9** = vLLM reserves ~10% for CUDA kernels and scheduling
+
+### 3.2 Quantization Impact on VRAM
+
+| Precision | Bytes/Parameter | 7B Model | 13B Model | 70B Model |
+|-----------|----------------|----------|-----------|-----------|
+| FP16 | 2 bytes | 14 GB | 26 GB | 140 GB |
+| FP8 | 1 byte | 7 GB | 13 GB | 70 GB |
+| INT4 (AWQ/GPTQ) | 0.5 bytes | 3.5 GB | 6.5 GB | 35 GB |
+
+### 3.3 GPU Options by Tier
+
+| Tier | GPU | VRAM | Bandwidth | Best For | Cloud Cost/hr |
+|------|-----|------|-----------|----------|---------------|
+| Entry | NVIDIA A10G | 24 GB | 600 GB/s | 7B-13B models, dev/test | ~$0.50 |
+| Standard | NVIDIA A100 80GB | 80 GB | 2,039 GB/s | 70B quantized, production | ~$3.00 |
+| High-perf | NVIDIA H100 SXM | 80 GB | 3,350 GB/s | High throughput, low latency | ~$3.50 |
+| Large model | NVIDIA H200 SXM | 141 GB | 4,800 GB/s | 70B FP16, long context | ~$4.50 |
+| Frontier | NVIDIA B200 | 192 GB | 8,000 GB/s | Trillion-param, NVFP4 | ~$8.00 |
+| Budget | NVIDIA RTX 4090 | 24 GB | 1,008 GB/s | Dev/test only | N/A (consumer) |
+
+### 3.4 Model-to-GPU Mapping
+
+| Model | Min VRAM | Recommended Setup | Monthly Cost (Cloud) |
+|-------|----------|-------------------|---------------------|
+| Llama 3 8B | 18 GB | 1x A10G (24 GB) | ~$400 |
+| Mistral 7B | 16 GB | 1x A10G (24 GB) | ~$400 |
+| Llama 3 8B (INT4) | 6 GB | 1x A10G (24 GB) | ~$400 |
+| Llama 3 70B | 150 GB | 2x A100 80GB | ~$4,000 |
+| Llama 3 70B (INT4) | 40 GB | 1x A100 80GB | ~$2,000 |
+| Mixtral 8x7B | 90 GB | 2x A100 80GB | ~$4,000 |
+| DeepSeek V3 (671B) | 671 GB | 8x H200 (1,128 GB) | ~$15,000 |
+
+### 3.5 Serving Framework Comparison
+
+| Framework | Memory Overhead | Throughput (batch 8) | Setup | Best For |
+|-----------|----------------|---------------------|-------|----------|
+| vLLM | ~45 GB | ~900 tok/s | Low | Most teams, PagedAttention |
+| TGI | ~48 GB | ~750 tok/s | Low | Hugging Face ecosystem |
+| TensorRT-LLM | ~42 GB | ~1,100 tok/s | Medium | Max NVIDIA throughput |
+
+### 3.6 Infrastructure Requirements
+
+| Component | Minimum | Recommended | Notes |
+|-----------|---------|-------------|-------|
+| CPU | 8 cores | 16+ cores | For data preprocessing, embedding |
+| RAM | 32 GB | 64+ GB | For non-GPU workloads |
+| Storage | 500 GB SSD | 2+ TB NVMe | Vector DB, model cache, logs |
+| Network | 1 Gbps | 10+ Gbps | For multi-node, API traffic |
+| GPU | 1x A10G | 2x A100 80GB | Based on model size |
+
+### 3.7 Scaling Considerations
+
+- **Scale-to-zero** saves cost but adds cold start latency (30-120s)
+- **Continuous batching** improves GPU utilization but affects latency
+- **KV cache** grows linearly with context length and concurrent users
+- **Multi-GPU** requires NVLink for best interconnect (PCIe is a bottleneck)
+- **Spot instances** reduce cost 60-70% but require fault tolerance
+
+---
+
+## 4. API Requirements
+
+### 4.1 API Gateway Endpoints
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| POST | /api/v1/query | Process AI query | Required |
+| POST | /api/v1/ingest | Ingest document | Admin |
+| GET | /api/v1/models | List available models | Required |
+| GET | /api/v1/health | System health check | Public |
+| GET | /api/v1/metrics | Usage metrics | Admin |
+| POST | /api/v1/auth/login | Authenticate user | Public |
+
+### 4.2 AI Query API
+
+```
+POST /api/v1/query
+```
+
+**Request:**
+```json
+{
+  "query": "What is our remote work policy?",
+  "user_id": "user-001",
+  "session_id": "optional-session-id",
+  "use_agent": false,
+  "max_context_tokens": 4096,
+  "temperature": 0.2
+}
+```
+
+**Response:**
+```json
+{
+  "request_id": "req-abc123",
+  "answer": "Our remote work policy allows...",
+  "sources": [
+    {"source": "hr/policy-remote-work.md", "score": 0.95}
+  ],
+  "model_used": "gpt-4",
+  "provider": "openai",
+  "tokens_used": 500,
+  "latency_ms": 1200,
+  "cost_usd": 0.015,
+  "status": "completed"
+}
+```
+
+### 4.3 Document Ingestion API
+
+```
+POST /api/v1/ingest
+```
+
+**Request:**
+```json
+{
+  "source": "hr/new-policy.md",
+  "content": "Full document content...",
+  "category": "hr",
+  "access": ["hr", "admin"]
+}
+```
+
+### 4.4 Model Router API
+
+```
+GET /api/v1/models
+```
+
+**Response:**
+```json
+{
+  "routes": [
+    {"model": "gpt-4", "provider": "openai", "priority": 1, "cost_per_1k": 0.03},
+    {"model": "claude-3", "provider": "anthropic", "priority": 2, "cost_per_1k": 0.015},
+    {"model": "llama-3-70b", "provider": "self_hosted", "priority": 3, "cost_per_1k": 0.0}
+  ]
+}
+```
+
+### 4.5 Observability API
+
+```
+GET /api/v1/metrics
+```
+
+**Response:**
+```json
+{
+  "total_requests": 1500,
+  "avg_latency_ms": 1800,
+  "total_tokens": 750000,
+  "total_cost_usd": 45.50,
+  "cost_by_model": {"gpt-4": 30.20, "claude-3": 15.30}
+}
+```
+
+---
+
+## 5. Nvidia NIM Free API
+
+### 5.1 Overview
+
+NVIDIA NIM (NVIDIA Inference Microservices) provides free API endpoints for prototyping via the NVIDIA Developer Program.
+
+- **Portal:** https://build.nvidia.com
+- **Docs:** https://docs.api.nvidia.com/nim/docs/
+- **Cost:** Free for developer program members (prototyping, research, development)
+- **Production:** Requires NVIDIA AI Enterprise license ($4,500/GPU/year)
+
+### 5.2 Free Tier Limits
+
+| Limit | Value |
+|-------|-------|
+| Access | NVIDIA Developer Program membership (free) |
+| Use case | Prototyping, research, development, testing |
+| GPU limit | Up to 16 GPUs for self-hosted |
+| API calls | Subject to rate limits (varies by model) |
+| Production | Not included (need Enterprise license) |
+
+### 5.3 Available Free Models
+
+| Model | Type | Context | Use Case |
+|-------|------|---------|----------|
+| Llama 3.1 8B Instruct | Chat/Instruct | 128K | General Q&A, lightweight tasks |
+| Llama 3.1 70B Instruct | Chat/Instruct | 128K | Complex reasoning, analysis |
+| Mixtral 8x7B Instruct | Mixture of Experts | 32K | Multi-task, cost-efficient |
+| Nemotron-Mini-4B-Instruct | Small Chat | 4K | Fast, simple queries |
+| Phi-3 Medium 14B Instruct | Medium Chat | 128K | Balanced quality/speed |
+| Snowflake Arctic Embed L | Embedding | 8192 | Text embeddings for RAG |
+
+### 5.4 API Endpoints (OpenAI-Compatible)
+
+```
+Base URL: https://integrate.api.nvidia.com/v1
+
+POST /v1/chat/completions    # Chat completions (OpenAI-compatible)
+POST /v1/completions         # Text completions
+GET  /v1/models              # List available models
+GET  /v1/health/live         # Liveness check
+GET  /v1/health/ready        # Readiness check
+GET  /v1/metrics             # Prometheus metrics
+```
+
+### 5.5 Usage Example (Python)
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://integrate.api.nvidia.com/v1",
+    api_key="nvapi-YOUR_API_KEY"  # Get from build.nvidia.com
+)
+
+response = client.chat.completions.create(
+    model="meta/llama-3.1-8b-instruct",
+    messages=[
+        {"role": "system", "content": "You are an enterprise AI assistant."},
+        {"role": "user", "content": "What is our remote work policy?"}
+    ],
+    temperature=0.2,
+    max_tokens=1024
+)
+
+print(response.choices[0].message.content)
+```
+
+### 5.6 Usage Example (curl)
+
+```bash
+curl -s https://integrate.api.nvidia.com/v1/chat/completions \
+  -H "Authorization: Bearer nvapi-YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "meta/llama-3.1-8b-instruct",
+    "messages": [{"role": "user", "content": "Hello"}],
+    "temperature": 0.2,
+    "max_tokens": 256
+  }'
+```
+
+### 5.7 Integration with Model Router
+
+```python
+# In app/model_router.py
+NIM_ROUTE = ModelRoute(
+    provider=ModelProvider.SELF_HOSTED,
+    model_name="llama-3.1-8b-instruct",
+    endpoint="https://integrate.api.nvidia.com/v1/chat/completions",
+    priority=3,  # Fallback option
+    max_tokens=128000,
+    cost_per_1k_input=0.0,   # Free tier
+    cost_per_1k_output=0.0   # Free tier
+)
+```
+
+---
+
+## 6. OpenRouter Free API
+
+### 6.1 Overview
+
+OpenRouter provides a unified API to access multiple LLM providers, including many free models.
+
+- **Portal:** https://openrouter.ai
+- **Docs:** https://openrouter.ai/docs
+- **Cost:** Free models available; paid models use credits
+- **Router:** `openrouter/free` automatically selects a free model
+
+### 6.2 Free Tier Limits
+
+| Credits Purchased | Requests/Day | Requests/Minute |
+|-------------------|--------------|-----------------|
+| < $10 | 50 | 20 |
+| >= $10 | 1,000 | 20 |
+
+### 6.3 Free Models Available
+
+| Model ID | Type | Context | Capabilities |
+|----------|------|---------|--------------|
+| deepseek/deepseek-r1:free | Reasoning | 64K | Chain-of-thought, analysis |
+| meta-llama/llama-3.1-8b-instruct:free | Chat | 128K | General Q&A |
+| qwen/qwen-2.5-72b-instruct:free | Chat | 128K | Complex reasoning |
+| google/gemma-2-9b-it:free | Chat | 8K | Fast, lightweight |
+| mistralai/mistral-7b-instruct:free | Chat | 32K | Multi-language |
+| openrouter/free | Auto-router | Varies | Automatically picks best free model |
+
+### 6.4 API Endpoints
+
+```
+Base URL: https://openrouter.ai/api/v1
+
+POST /v1/chat/completions    # Chat completions (OpenAI-compatible)
+GET  /v1/models              # List all models
+GET  /api/v1/key             # Check API key info
+GET  /api/v1/generation      # Get generation details
+```
+
+### 6.5 Usage Example (Python)
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="sk-or-YOUR_API_KEY"  # Get from openrouter.ai
+)
+
+# Use specific free model
+response = client.chat.completions.create(
+    model="deepseek/deepseek-r1:free",
+    messages=[
+        {"role": "user", "content": "Explain our data retention policy"}
+    ],
+    temperature=0.2,
+    max_tokens=1024
+)
+
+# Or use auto-router (picks best free model)
+response = client.chat.completions.create(
+    model="openrouter/free",
+    messages=[
+        {"role": "user", "content": "Hello"}
+    ]
+)
+```
+
+### 6.6 Usage Example (curl)
+
+```bash
+curl -s https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer sk-or-YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "deepseek/deepseek-r1:free",
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+```
+
+### 6.7 Integration with Model Router
+
+```python
+# In app/model_router.py
+OPENROUTER_ROUTE = ModelRoute(
+    provider=ModelProvider.OPENAI,  # Uses OpenAI-compatible API
+    model_name="openrouter/free",
+    endpoint="https://openrouter.ai/api/v1/chat/completions",
+    priority=4,  # Fallback option
+    max_tokens=32000,
+    cost_per_1k_input=0.0,   # Free tier
+    cost_per_1k_output=0.0   # Free tier
+)
+```
+
+### 6.8 Rate Limit Handling
+
+```python
+import time
+
+def call_with_retry(client, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            return client.chat.completions.create(...)
+        except RateLimitError:
+            wait = 2 ** attempt  # Exponential backoff
+            time.sleep(wait)
+    raise Exception("Max retries exceeded")
+```
+
+### 6.9 Free API Comparison
+
+| Feature | Nvidia NIM | OpenRouter Free |
+|---------|-----------|-----------------|
+| Sign-up | NVIDIA Developer Program | OpenRouter account |
+| Free requests | Rate-limited (varies) | 50-1,000/day |
+| Models | NVIDIA-hosted LLMs | Multiple providers |
+| Self-host option | Yes (up to 16 GPUs) | No |
+| Production use | Enterprise license required | Free tier only |
+| Best for | Prototyping with NVIDIA models | Multi-model comparison |
+| API format | OpenAI-compatible | OpenAI-compatible |
+| Embedding models | Yes (Snowflake Arctic) | Limited |
+
+---
+
+## 7. Functional Requirements by Domain
 
 ### 2.1 AI Application Layer
 
@@ -221,9 +622,9 @@ By completion, the learner can:
 
 ---
 
-## 4. Non-Functional Requirements
+## 8. Non-Functional Requirements
 
-### 4.1 Performance
+### 8.1 Performance
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -233,7 +634,7 @@ By completion, the learner can:
 | NFR-P-04 | Throughput | Support 10,000 concurrent users | Day 01, 09 |
 | NFR-P-05 | Inference throughput | Scale to 100 req/sec | Day 04, 09 |
 
-### 4.2 Availability
+### 8.2 Availability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -242,7 +643,7 @@ By completion, the learner can:
 | NFR-A-03 | Data availability | Vector DB redundancy | Day 05, 07 |
 | NFR-A-04 | Disaster recovery | RTO < 1 hour, RPO < 5 minutes | Day 09 |
 
-### 4.3 Security
+### 8.3 Security
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -254,7 +655,7 @@ By completion, the learner can:
 | NFR-S-06 | Prompt injection | Detection and prevention | Day 11 |
 | NFR-S-07 | Data leakage | Prevent sensitive data in prompts | Day 01, 11 |
 
-### 4.4 Scalability
+### 8.4 Scalability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -264,7 +665,7 @@ By completion, the learner can:
 | NFR-SC-04 | Horizontal scaling | Add nodes without downtime | Day 04, 09 |
 | NFR-SC-05 | GPU scaling | Autoscale based on queue depth | Day 04, 09 |
 
-### 4.5 Cost
+### 8.5 Cost
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -274,7 +675,7 @@ By completion, the learner can:
 | NFR-C-04 | Cost visibility | Per user, per model, per department | Day 09, 10 |
 | NFR-C-05 | Budget alerts | Notify at 80% and 100% of budget | Day 09, 10 |
 
-### 4.6 Reliability
+### 8.6 Reliability
 
 | ID | Requirement | Target | Source |
 |----|-------------|--------|--------|
@@ -286,7 +687,7 @@ By completion, the learner can:
 
 ---
 
-## 5. Deliverables by Day
+## 9. Deliverables by Day
 
 ### Day 01 — Foundations
 
@@ -382,7 +783,7 @@ By completion, the learner can:
 
 ---
 
-## 6. Sample App Requirements
+## 10. Sample App Requirements
 
 ### Days with Sample Apps
 
@@ -407,7 +808,7 @@ By completion, the learner can:
 
 ---
 
-## 7. Architecture Artifact Requirements
+## 11. Architecture Artifact Requirements
 
 ### Diagram Types Required
 
@@ -436,7 +837,7 @@ Minimum ADRs:
 
 ---
 
-## 8. Portfolio Completion Checklist
+## 12. Portfolio Completion Checklist
 
 ### Architecture Artifacts
 
@@ -473,7 +874,7 @@ Minimum ADRs:
 
 ---
 
-## 9. Architect Competency Requirements
+## 13. Architect Competency Requirements
 
 ### Knowledge Domains
 
