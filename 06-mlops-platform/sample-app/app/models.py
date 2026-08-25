@@ -45,6 +45,7 @@ class Experiment(BaseModel):
     parameters: dict
     metrics: dict = Field(default_factory=dict)
     created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
     status: str = "created"
 
 

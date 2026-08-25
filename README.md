@@ -4,8 +4,6 @@ A practical 12-day roadmap for engineers who want to move from building AI featu
 
 ## Who is this for?
 
-This roadmap is designed for:
-
 - Cloud Engineers
 - DevOps Engineers
 - Platform Engineers
@@ -18,159 +16,209 @@ This roadmap is designed for:
 
 By the end of 12 days, you should be able to reason about an AI system as an architect:
 
-- understand the AI and data foundations
-- design LLM and agentic architectures
-- design AI infrastructure and deployment platforms
-- evaluate technology choices
-- design for scale, reliability, and failure
-- model AI costs and apply FinOps thinking
-- build observability into AI systems
-- design security and governance
-- connect architecture decisions to business outcomes
-- document decisions with diagrams, ADRs, trade-off analyses, and success metrics
+- Understand the AI and data foundations
+- Design LLM and agentic architectures
+- Design AI infrastructure and deployment platforms
+- Evaluate technology choices
+- Design for scale, reliability, and failure
+- Model AI costs and apply FinOps thinking
+- Build observability into AI systems
+- Design security and governance
+- Connect architecture decisions to business outcomes
+- Document decisions with diagrams, ADRs, trade-off analyses, and success metrics
 
 ## Repository structure
 
 ```
 ai-architect-2026/
-│
 ├── README.md
+├── requirements.txt                  # Python dependencies for all sample-apps
 │
-├── 01-foundations/          # Technical vocabulary and architecture mindset
+├── 01-foundations/                   # Technical vocabulary and architecture mindset
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 02-ai-ml/               # AI/ML & LLM fundamentals
+├── 02-ai-ml/                         # AI/ML & LLM fundamentals
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 03-llm-engineering/     # RAG, agents, tool use, context engineering
+├── 03-llm-engineering/               # RAG, agents, tool use, context engineering
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 04-ai-infrastructure/   # GPUs, Kubernetes, inference serving
+├── 04-ai-infrastructure/             # GPUs, Kubernetes, inference serving
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 05-data-architecture/   # Data systems, streaming, vector retrieval
+├── 05-data-architecture/             # Data systems, streaming, vector retrieval
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 06-mlops-platform/      # MLOps lifecycle and platform engineering
+├── 06-mlops-platform/                # MLOps lifecycle and platform engineering
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 07-system-architecture/ # End-to-end system design
+├── 07-system-architecture/           # End-to-end system design
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 08-technology-decisions/# Build vs buy, ADRs, trade-off analysis
+├── 08-technology-decisions/          # Build vs buy, ADRs, trade-off analysis
 │   ├── notes.md
 │   ├── exercise.md
-│   └── ADR-001-model-selection.md
+│   ├── ADR-001-model-selection.md
+│   └── sample-app/
 │
-├── 09-scale-finops/        # Scaling, reliability, cost modeling
+├── 09-scale-finops/                  # Scaling, reliability, cost modeling
 │   ├── notes.md
 │   ├── cost-model.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 10-observability/       # Monitoring, metrics, alerting
+├── 10-observability/                 # Monitoring, metrics, alerting
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 11-security-governance/ # Threat modeling, governance, compliance
+├── 11-security-governance/           # Threat modeling, governance, compliance
 │   ├── notes.md
 │   ├── threat-model.md
-│   └── exercise.md
+│   ├── exercise.md
+│   └── sample-app/
 │
-├── 12-business-architecture/ # ROI, business value, portfolio
+├── 12-business-architecture/         # ROI, business value, portfolio
 │   ├── notes.md
 │   ├── architecture.md
-│   └── exercise.md
+│   ├── exercise.md
+│   ├── portfolio-structure.md
+│   └── sample-app/
 │
-├── architecture/           # Architecture diagrams
+├── architecture/                     # Architecture diagrams and documentation
 │   ├── context-diagram/
 │   ├── logical-architecture/
 │   ├── deployment-architecture/
 │   ├── data-flow/
 │   └── security-architecture/
 │
-└── capstone/               # Final project artifacts
+└── capstone/                         # Final project artifacts
     ├── architecture.md
-    ├── requirements.md
-    ├── ADRs/
+    ├── business-case.md
     ├── cost-model.md
-    ├── threat-model.md
     ├── observability.md
-    └── business-case.md
+    ├── requirements.md
+    ├── threat-model.md
+    └── ADRs/
 ```
 
 ## 12-Day Path
 
-| Day | Topic | Primary Outcome |
-|---|---|---|
-| 01 | Foundations for AI Architecture | Establish the engineering, AI, cloud, and data foundation |
-| 02 | AI/ML & LLM Fundamentals | Understand models, transformers, embeddings, and inference |
-| 03 | LLM Engineering | Design RAG, tool use, context, routing, and agentic systems |
-| 04 | AI Infrastructure | Understand GPUs, inference serving, Kubernetes, and scaling |
-| 05 | Data Architecture for AI | Design data, streaming, retrieval, and vector architectures |
-| 06 | MLOps & AI Platform Engineering | Build the production lifecycle around models |
-| 07 | AI System Architecture | Design resilient end-to-end AI systems |
-| 08 | Technology Selection & Build vs Buy | Make architecture decisions using explicit trade-offs |
-| 09 | Scale, Reliability & AI FinOps | Design for traffic, failure, latency, and cost |
-| 10 | AI Observability | Measure system, model, retrieval, quality, and cost signals |
-| 11 | AI Security, Governance & Responsible AI | Design trustworthy enterprise AI |
-| 12 | Business Alignment & Architecture Portfolio | Connect AI architecture to ROI and demonstrate readiness |
+| Day | Topic | Primary Outcome | Sample App |
+|-----|-------|-----------------|------------|
+| 01 | Foundations for AI Architecture | Engineering, AI, cloud, data foundation | Enterprise AI Knowledge Assistant |
+| 02 | AI/ML & LLM Fundamentals | Models, transformers, embeddings, inference | Model comparison & routing |
+| 03 | LLM Engineering | RAG, tool use, context, routing, agents | Multi-agent system with tools |
+| 04 | AI Infrastructure | GPUs, inference serving, Kubernetes | vLLM inference server |
+| 05 | Data Architecture | Data, streaming, retrieval, vector systems | RAG pipeline with permissions |
+| 06 | MLOps & AI Platform Engineering | Production lifecycle around models | Model registry, evaluation, deployment |
+| 07 | AI System Architecture | Resilient end-to-end AI systems | Full system with gateway, RAG, agents |
+| 08 | Technology Selection & Build vs Buy | Architecture decisions with trade-offs | Decision engine with ADRs |
+| 09 | Scale, Reliability & AI FinOps | Traffic, failure, latency, cost | Cache, circuit breaker, cost tracker |
+| 10 | AI Observability | System, model, retrieval, quality signals | Metrics, tracing, alerts, SLOs |
+| 11 | AI Security, Governance & Responsible AI | Trustworthy enterprise AI | Auth, prompt guard, PII, audit |
+| 12 | Business Alignment & Architecture Portfolio | ROI, business value, portfolio | Portfolio, ADRs, cost model, briefs |
 
 ## How to use the series
 
-Spend roughly 60–120 minutes per day.
+Spend roughly 60-120 minutes per day.
 
 For every day:
 
 1. Read `notes.md` for concepts
 2. Study `architecture.md` for patterns
 3. Complete `exercise.md`
-4. Run the sample app (when available)
+4. Run the sample app
 5. Produce the requested artifact
 6. Add the artifact to your personal AI Architecture portfolio
 
+### Running Sample Apps
+
+Each day includes a working sample app. To run any sample app:
+
+```bash
+cd <day-folder>/sample-app
+pip install -r requirements.txt
+python test_system.py
+```
+
 ### Sample Apps
 
-| Day | App | Description |
-|-----|-----|-------------|
-| 01 | [`01-foundations/sample-app/`](01-foundations/sample-app/) | Enterprise AI Knowledge Assistant with RAG |
-| 02 | [`02-ai-ml/sample-app/`](02-ai-ml/sample-app/) | Model comparison & routing demo |
-| 03+ | Coming soon | LLM engineering patterns |
+| Day | Folder | Tests | Key Components |
+|-----|--------|-------|----------------|
+| 01 | `01-foundations/sample-app/` | ✅ | RAG, auth, model gateway, observability |
+| 02 | `02-ai-ml/sample-app/` | ✅ | Model comparator, router, gateway |
+| 03 | `03-llm-engineering/sample-app/` | ✅ | Agents, tools, orchestrator |
+| 04 | `04-ai-infrastructure/sample-app/` | ✅ | Inference server, health, benchmarks |
+| 05 | `05-data-architecture/sample-app/` | ✅ | Chunker, embeddings, vectordb, ingestion |
+| 06 | `06-mlops-platform/sample-app/` | ✅ | Registry, evaluation, deployment, monitoring |
+| 07 | `07-system-architecture/sample-app/` | ✅ | Full system: gateway, RAG, agents, security |
+| 08 | `08-technology-decisions/sample-app/` | ✅ | ADR manager, decision engine, build vs buy |
+| 09 | `09-scale-finops/sample-app/` | ✅ | Cache, circuit breaker, rate limiter, cost tracker |
+| 10 | `10-observability/sample-app/` | ✅ | Metrics, logger, tracer, alerts, SLOs, drift |
+| 11 | `11-security-governance/sample-app/` | ✅ | Auth, prompt guard, PII, audit, compliance |
+| 12 | `12-business-architecture/sample-app/` | ✅ | Portfolio, ADRs, cost model, trade-offs, briefs |
 
-### Time Estimates
+## Architecture Portfolio
 
-| Day | Notes | Exercise | Sample App | Total |
-|-----|-------|----------|------------|-------|
-| 01 | 45 min | 2-3 hrs | 15 min | ~3 hrs |
-| 02 | 60 min | 3-4 hrs | 20 min | ~4.5 hrs |
+The `architecture/` folder contains detailed architecture documentation:
 
-The objective is not to memorize tools. The objective is to develop architectural judgment.
+| Document | Content |
+|----------|---------|
+| `context-diagram/` | System context, actors, external integrations |
+| `logical-architecture/` | Component diagram, API contracts, data stores |
+| `deployment-architecture/` | Infrastructure topology, Kubernetes, networking |
+| `data-flow/` | Ingestion, query, agent, and storage patterns |
+| `security-architecture/` | Auth, authz, encryption, audit, compliance |
+
+## Capstone
+
+The `capstone/` folder contains the complete reference architecture:
+
+| Document | Content |
+|----------|---------|
+| `architecture.md` | Reference architecture with all components |
+| `business-case.md` | ROI, financial analysis, risk assessment |
+| `cost-model.md` | Detailed cost breakdown, scaling projections |
+| `observability.md` | Dashboards, alerting, SLOs, feedback loops |
+| `requirements.md` | Functional and non-functional requirements |
+| `threat-model.md` | 12 threats with mitigations and controls |
+| `ADRs/` | 7 Architecture Decision Records |
 
 ## Suggested portfolio artifacts
 
 By the end of the series, aim to have:
 
-- 3–5 architecture diagrams (in `architecture/`)
-- 2–3 Architecture Decision Records (in `08-technology-decisions/` or `capstone/ADRs/`)
-- 1 cost model (`09-scale-finops/cost-model.md` or `capstone/cost-model.md`)
-- 1 reliability/scaling plan
-- 1 AI security and governance checklist (`11-security-governance/threat-model.md`)
-- 1 business-value scorecard (`12-business-architecture/architecture.md`)
+- 5 architecture diagrams (in `architecture/`)
+- 7 Architecture Decision Records (in `capstone/ADRs/`)
+- 1 cost model (`capstone/cost-model.md`)
+- 1 threat model (`capstone/threat-model.md`)
+- 1 observability plan (`capstone/observability.md`)
+- 1 business case (`capstone/business-case.md`)
 - 1 complete reference architecture (`capstone/architecture.md`)
+- 12 working sample-apps with passing tests
 
 ## Core principle
 
@@ -182,27 +230,23 @@ The architect asks:
 
 > "What system should we design, why is this the right trade-off, how will it scale, what will it cost, what can fail, how will we govern it, and what business outcome will it produce?"
 
-## Source basis
-
-This series synthesizes the architectural progression in the accompanying roadmap material: technical and data foundations, system architecture, technology selection, scale and cost, and governance/business alignment, combined with a practical AI infrastructure and platform-engineering track.
-
----
-
 ## Progress Tracker
-
-Use this to track your progress:
 
 ```
 Day 01: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
 Day 02: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
-Day 03: [ ] Notes  [ ] Architecture  [ ] Exercise
-Day 04: [ ] Notes  [ ] Architecture  [ ] Exercise
-Day 05: [ ] Notes  [ ] Architecture  [ ] Exercise
-Day 06: [ ] Notes  [ ] Architecture  [ ] Exercise
-Day 07: [ ] Notes  [ ] Architecture  [ ] Exercise
-Day 08: [ ] Notes  [ ] Exercise  [ ] ADR
-Day 09: [ ] Notes  [ ] Cost Model  [ ] Exercise
-Day 10: [ ] Notes  [ ] Architecture  [ ] Exercise
-Day 11: [ ] Notes  [ ] Threat Model  [ ] Exercise
-Day 12: [ ] Notes  [ ] Architecture  [ ] Exercise
+Day 03: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
+Day 04: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
+Day 05: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
+Day 06: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
+Day 07: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
+Day 08: [ ] Notes  [ ] Exercise  [ ] ADR  [ ] Sample App
+Day 09: [ ] Notes  [ ] Cost Model  [ ] Exercise  [ ] Sample App
+Day 10: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
+Day 11: [ ] Notes  [ ] Threat Model  [ ] Exercise  [ ] Sample App
+Day 12: [ ] Notes  [ ] Architecture  [ ] Exercise  [ ] Sample App
 ```
+
+---
+
+**12 Days Complete.** Learn → Design → Build → Measure → Document → Review → Repeat.

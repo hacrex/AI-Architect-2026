@@ -1,0 +1,45 @@
+"""Configuration for the Scale, Reliability & AI FinOps app."""
+import os
+from pathlib import Path
+
+
+BASE_DIR = Path(__file__).parent.parent
+DATA_DIR = BASE_DIR / "data"
+DATA_DIR.mkdir(exist_ok=True)
+
+# Semantic Cache
+CACHE_SIMILARITY_THRESHOLD = float(os.getenv("CACHE_SIMILARITY_THRESHOLD", "0.92"))
+CACHE_MAX_ENTRIES = int(os.getenv("CACHE_MAX_ENTRIES", "10000"))
+CACHE_DEFAULT_TTL_SECONDS = int(os.getenv("CACHE_DEFAULT_TTL_SECONDS", "3600"))
+
+# Fallback
+FALLBACK_TIMEOUT_SECONDS = float(os.getenv("FALLBACK_TIMEOUT_SECONDS", "5.0"))
+FALLBACK_MAX_RETRIES = int(os.getenv("FALLBACK_MAX_RETRIES", "2"))
+
+# Circuit Breaker
+CB_FAILURE_THRESHOLD = int(os.getenv("CB_FAILURE_THRESHOLD", "5"))
+CB_RECOVERY_TIMEOUT_SECONDS = int(os.getenv("CB_RECOVERY_TIMEOUT_SECONDS", "30"))
+CB_HALF_OPEN_MAX_CALLS = int(os.getenv("CB_HALF_OPEN_MAX_CALLS", "3"))
+
+# Rate Limiting
+RATE_LIMIT_REQUESTS_PER_MINUTE = int(os.getenv("RATE_LIMIT_REQUESTS_PER_MINUTE", "60"))
+RATE_LIMIT_BURST_SIZE = int(os.getenv("RATE_LIMIT_BURST_SIZE", "10"))
+
+# Cost Tracking
+COST_PER_1M_INPUT_TOKENS = float(os.getenv("COST_PER_1M_INPUT_TOKENS", "3.0"))
+COST_PER_1M_OUTPUT_TOKENS = float(os.getenv("COST_PER_1M_OUTPUT_TOKENS", "15.0"))
+COST_PER_1M_EMBEDDING_TOKENS = float(os.getenv("COST_PER_1M_EMBEDDING_TOKENS", "0.1"))
+COST_PER_1M_VECTOR_SEARCH = float(os.getenv("COST_PER_1M_VECTOR_SEARCH", "0.01"))
+GPU_COST_PER_HOUR = float(os.getenv("GPU_COST_PER_HOUR", "2.50"))
+MONTHLY_BUDGET_LIMIT_USD = float(os.getenv("MONTHLY_BUDGET_LIMIT_USD", "15000.0"))
+
+# Capacity Planning
+BASELINE_REQUESTS_PER_SEC = float(os.getenv("BASELINE_REQUESTS_PER_SEC", "10"))
+PEAK_MULTIPLIER = float(os.getenv("PEAK_MULTIPLIER", "10.0"))
+AVG_INPUT_TOKENS_PER_REQUEST = int(os.getenv("AVG_INPUT_TOKENS_PER_REQUEST", "2000"))
+AVG_OUTPUT_TOKENS_PER_REQUEST = int(os.getenv("AVG_OUTPUT_TOKENS_PER_REQUEST", "500"))
+GPU_INFERENCE_TOKENS_PER_SEC = float(os.getenv("GPU_INFERENCE_TOKENS_PER_SEC", "1000"))
+GPU_MEMORY_GB = float(os.getenv("GPU_MEMORY_GB", "24.0"))
+
+# Latency
+LATENCY_P95_TARGET_MS = float(os.getenv("LATENCY_P95_TARGET_MS", "2000.0"))
