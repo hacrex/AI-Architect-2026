@@ -311,4 +311,4 @@ After running this sample app, you should understand:
 6. How observability traces the entire request path
 7. How security follows every boundary
 
-Move to **Day 08 → Technology Selection & Build vs Buy** to learn which technologies to choose and why.
+Move to **Day 08 → Technology Decisions, Build vs Buy & Architecture Trade-offs** to learn which technologies to choose and why.
