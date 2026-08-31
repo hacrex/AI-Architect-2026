@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI ARCHITECT 2026</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-brand">AI ARCHITECT 2026</div>
+    <div class="nav-links">
+      <a href="#roadmap">ROADMAP</a>
+      <a href="#modules">MODULES</a>
+      <a href="#tools">TOOLS</a>
+      <a href="#architecture">ARCH</a>
+      <a href="#capstone">CAPSTONE</a>
+      <a href="#quickstart">START</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h1 class="hero-title">BUILD<br>PRODUCTION<br>AI SYSTEMS</h1>
+        <p class="hero-sub">12 DAYS. 12 MODULES. 12 WORKING APPS.</p>
+        <div class="hero-stats">
+          <div class="stat-box">
+            <span class="stat-num">80+</span>
+            <span class="stat-label">DOC FILES</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">12</span>
+            <span class="stat-label">SAMPLE APPS</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">50+</span>
+            <span class="stat-label">TOOLS</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">7</span>
+            <span class="stat-label">ADRS</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-ascii">
+┌─────────────────────────────────────┐
+│  AN AI ARCHITECT ASKS:              │
+│                                     │
+│  > What system should we design?    │
+│  > Why is this the right trade-off? │
+│  > How will it scale?               │
+│  > What will it cost?               │
+│  > What can fail?                   │
+│  > How will we govern it?           │
+│  > What business outcome?           │
+└─────────────────────────────────────┘
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" class="section">
+    <div class="section-header">
+      <h2>12-DAY ROADMAP</h2>
+      <p class="section-sub">FROM FEATURES TO PRODUCTION ARCHITECTURE</p>
+    </div>
+    <div class="roadmap-grid">
+      <a href="#day01" class="roadmap-item">
+        <span class="roadmap-day">01</span>
+        <span class="roadmap-title">FOUNDATIONS</span>
+        <span class="roadmap-desc">What an AI Architect is, 5 Questions, AI Architecture Stack</span>
+      </a>
+      <a href="#day02" class="roadmap-item">
+        <span class="roadmap-day">02</span>
+        <span class="roadmap-title">AI/ML & LLM</span>
+        <span class="roadmap-desc">Transformers, tokens, embeddings, model selection</span>
+      </a>
+      <a href="#day03" class="roadmap-item">
+        <span class="roadmap-day">03</span>
+        <span class="roadmap-title">LLM ENGINEERING</span>
+        <span class="roadmap-desc">RAG, tool calling, agents, model routing</span>
+      </a>
+      <a href="#day04" class="roadmap-item">
+        <span class="roadmap-day">04</span>
+        <span class="roadmap-title">INFRASTRUCTURE</span>
+        <span class="roadmap-desc">GPU, quantization, vLLM, Kubernetes, autoscaling</span>
+      </a>
+      <a href="#day05" class="roadmap-item">
+        <span class="roadmap-day">05</span>
+        <span class="roadmap-title">DATA ARCHITECTURE</span>
+        <span class="roadmap-desc">Chunking, vector DBs, hybrid search, permissions</span>
+      </a>
+      <a href="#day06" class="roadmap-item">
+        <span class="roadmap-day">06</span>
+        <span class="roadmap-title">MLOPS PLATFORM</span>
+        <span class="roadmap-desc">Experiment tracking, model registry, CI/CD, drift</span>
+      </a>
+      <a href="#day07" class="roadmap-item">
+        <span class="roadmap-day">07</span>
+        <span class="roadmap-title">SYSTEM ARCHITECTURE</span>
+        <span class="roadmap-desc">Full system design, layers, failure domains, ADRs</span>
+      </a>
+      <a href="#day08" class="roadmap-item">
+        <span class="roadmap-day">08</span>
+        <span class="roadmap-title">TECH DECISIONS</span>
+        <span class="roadmap-desc">Build vs buy, trade-off matrix, ADRs, constraints</span>
+      </a>
+      <a href="#day09" class="roadmap-item">
+        <span class="roadmap-day">09</span>
+        <span class="roadmap-title">SCALE & FINOPS</span>
+        <span class="roadmap-desc">Autoscaling, reliability, caching, cost modeling</span>
+      </a>
+      <a href="#day10" class="roadmap-item">
+        <span class="roadmap-day">10</span>
+        <span class="roadmap-title">OBSERVABILITY</span>
+        <span class="roadmap-desc">Metrics, traces, SLOs, drift detection, dashboards</span>
+      </a>
+      <a href="#day11" class="roadmap-item">
+        <span class="roadmap-day">11</span>
+        <span class="roadmap-title">SECURITY</span>
+        <span class="roadmap-desc">Prompt injection, PII, audit, compliance, governance</span>
+      </a>
+      <a href="#day12" class="roadmap-item">
+        <span class="roadmap-day">12</span>
+        <span class="roadmap-title">BUSINESS</span>
+        <span class="roadmap-desc">ROI, portfolio, executive briefs, architecture review</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section id="modules" class="section section-dark">
+    <div class="section-header">
+      <h2>MODULE DETAILS</h2>
+      <p class="section-sub">CLICK A MODULE TO EXPLORE</p>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">ALL</button>
+        <button class="filter-btn" data-filter="foundation">FOUNDATIONS</button>
+        <button class="filter-btn" data-filter="technical">TECHNICAL</button>
+        <button class="filter-btn" data-filter="platform">PLATFORM</button>
+        <button class="filter-btn" data-filter="production">PRODUCTION</button>
+      </div>
+    </div>
+    <div class="modules-grid" id="modulesGrid">
+
+      <!-- DAY 01 -->
+      <div class="module-card" data-category="foundation" id="day01">
+        <div class="module-header">
+          <span class="module-num">01</span>
+          <span class="module-tag">FOUNDATION</span>
+        </div>
+        <h3>FOUNDATIONS FOR AI ARCHITECTURE</h3>
+        <div class="module-body">
+          <p>What an AI Architect is. The 5 Questions every architect should ask. The AI Architecture Stack (8 layers from Business to Infrastructure).</p>
+          <div class="module-topics">
+            <span>AI ARCHITECT ROLE</span>
+            <span>5 QUESTIONS</span>
+            <span>8-LAYER STACK</span>
+            <span>FAILURE DOMAINS</span>
+            <span>LOOSE COUPLING</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (397 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md (17 questions)</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (6 modules)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Enterprise AI Knowledge Assistant
+          <code>app/main.py | app/rag.py | app/auth.py | app/model_gateway.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 02 -->
+      <div class="module-card" data-category="foundation" id="day02">
+        <div class="module-header">
+          <span class="module-num">02</span>
+          <span class="module-tag">FOUNDATION</span>
+        </div>
+        <h3>AI/ML & LLM FUNDAMENTALS</h3>
+        <div class="module-body">
+          <p>AI landscape hierarchy, transformers, tokens, context windows, embeddings, vector databases, model evaluation, RAG vs fine-tuning.</p>
+          <div class="module-topics">
+            <span>TRANSFORMERS</span>
+            <span>TOKENS</span>
+            <span>EMBEDDINGS</span>
+            <span>CONTEXT WINDOWS</span>
+            <span>MODEL ROUTING</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (1033 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (5 modules)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Model Comparison & Routing
+          <code>app/model_comparator.py | app/model_router.py | app/model_gateway.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 03 -->
+      <div class="module-card" data-category="technical" id="day03">
+        <div class="module-header">
+          <span class="module-num">03</span>
+          <span class="module-tag">TECHNICAL</span>
+        </div>
+        <h3>LLM ENGINEERING</h3>
+        <div class="module-body">
+          <p>Six core building blocks: RAG, Context Engineering, Tool Calling, Agents, Memory/State, Model Routing. Batch vs real-time.</p>
+          <div class="module-topics">
+            <span>RAG</span>
+            <span>TOOL CALLING</span>
+            <span>AGENTS</span>
+            <span>CONTEXT ENGINEERING</span>
+            <span>AI GATEWAY</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (711 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (3 modules)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Multi-Agent System with Tools
+          <code>app/orchestrator.py | app/models.py | app/main.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 04 -->
+      <div class="module-card" data-category="technical" id="day04">
+        <div class="module-header">
+          <span class="module-num">04</span>
+          <span class="module-tag">TECHNICAL</span>
+        </div>
+        <h3>AI INFRASTRUCTURE</h3>
+        <div class="module-body">
+          <p>CPU vs GPU, GPU memory, quantization, vLLM, continuous batching, Docker for AI, Kubernetes + GPUs, autoscaling, scale-to-zero.</p>
+          <div class="module-topics">
+            <span>GPU</span>
+            <span>QUANTIZATION</span>
+            <span>VLLM</span>
+            <span>KUBERNETES</span>
+            <span>AUTOSCALING</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (780 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md (18 questions)</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ + benchmarks/</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> vLLM Inference Server
+          <code>app/inference.py | app/health.py | benchmarks/results.md</code>
+        </div>
+      </div>
+
+      <!-- DAY 05 -->
+      <div class="module-card" data-category="platform" id="day05">
+        <div class="module-header">
+          <span class="module-num">05</span>
+          <span class="module-tag">PLATFORM</span>
+        </div>
+        <h3>DATA ARCHITECTURE</h3>
+        <div class="module-body">
+          <p>Structured vs unstructured data, data lakes, ingestion patterns, RAG data pipeline, chunking strategies, vector DBs, hybrid search, multi-tenant data.</p>
+          <div class="module-topics">
+            <span>CHUNKING</span>
+            <span>VECTOR DB</span>
+            <span>HYBRID SEARCH</span>
+            <span>RERANKING</span>
+            <span>DATA GOVERNANCE</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (733 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md (16 questions)</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (9 modules) + docs/</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> RAG Pipeline with Permissions
+          <code>app/ingestion.py | app/chunker.py | app/retrieval.py | app/auth.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 06 -->
+      <div class="module-card" data-category="platform" id="day06">
+        <div class="module-header">
+          <span class="module-num">06</span>
+          <span class="module-tag">PLATFORM</span>
+        </div>
+        <h3>MLOPS & AI PLATFORM</h3>
+        <div class="module-body">
+          <p>MLOps vs LLMOps vs GenAIOps, experiment tracking, model registry, CI/CD for AI, deployment strategies, drift detection, feature stores.</p>
+          <div class="module-topics">
+            <span>EXPERIMENT TRACKING</span>
+            <span>MODEL REGISTRY</span>
+            <span>CI/CD</span>
+            <span>DRIFT DETECTION</span>
+            <span>FEATURE STORES</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (1324 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md (18 questions)</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (7 modules)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Model Registry & Deployment
+          <code>app/registry.py | app/evaluation.py | app/deployment.py | app/monitoring.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 07 -->
+      <div class="module-card" data-category="technical" id="day07">
+        <div class="module-header">
+          <span class="module-num">07</span>
+          <span class="module-tag">TECHNICAL</span>
+        </div>
+        <h3>AI SYSTEM ARCHITECTURE</h3>
+        <div class="module-body">
+          <p>Complete system design, architecture layers, AI Gateway, RAG as subsystem, agents as subsystem, event-driven AI, reliability, security, cost.</p>
+          <div class="module-topics">
+            <span>SYSTEM DESIGN</span>
+            <span>AI GATEWAY</span>
+            <span>EVENT-DRIVEN</span>
+            <span>FAILURE DOMAINS</span>
+            <span>ADRS</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (1153 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md (5 diagrams, 3 ADRs)</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (9 modules + pipelines)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Full System Architecture
+          <code>app/gateway.py | app/rag.py | app/agents.py | app/security.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 08 -->
+      <div class="module-card" data-category="platform" id="day08">
+        <div class="module-header">
+          <span class="module-num">08</span>
+          <span class="module-tag">PLATFORM</span>
+        </div>
+        <h3>TECHNOLOGY SELECTION</h3>
+        <div class="module-body">
+          <p>Decision framework, build vs buy, competitive advantage filter, hidden costs, workload-driven selection, ADRs, weighted scoring.</p>
+          <div class="module-topics">
+            <span>BUILD VS BUY</span>
+            <span>DECISION MATRIX</span>
+            <span>HIDDEN COSTS</span>
+            <span>ADRS</span>
+            <span>CONSTRAINTS</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (851 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> ADR-001-model-selection.md</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (6 modules + pipelines)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Decision Engine & ADR Manager
+          <code>app/decision_engine.py | app/build_buy_analyzer.py | app/adr_manager.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 09 -->
+      <div class="module-card" data-category="production" id="day09">
+        <div class="module-header">
+          <span class="module-num">09</span>
+          <span class="module-tag">PRODUCTION</span>
+        </div>
+        <h3>SCALE, RELIABILITY & FINOPS</h3>
+        <div class="module-body">
+          <p>Horizontal scaling, autoscaling, backpressure, circuit breakers, fallback routing, token/request/compute costs, semantic caching.</p>
+          <div class="module-topics">
+            <span>AUTOSCALING</span>
+            <span>CIRCUIT BREAKERS</span>
+            <span>SEMANTIC CACHING</span>
+            <span>COST MODELING</span>
+            <span>RATE LIMITING</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md + cost-model.md</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (7 modules)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Cache, Circuit Breaker, Rate Limiter
+          <code>app/semantic_cache.py | app/circuit_breaker.py | app/cost_tracker.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 10 -->
+      <div class="module-card" data-category="production" id="day10">
+        <div class="module-header">
+          <span class="module-num">10</span>
+          <span class="module-tag">PRODUCTION</span>
+        </div>
+        <h3>AI OBSERVABILITY</h3>
+        <div class="module-body">
+          <p>Metrics/logs/traces, AI observability layers, token observability, LLM tracing, RAG monitoring, agent observability, SLOs, alerting.</p>
+          <div class="module-topics">
+            <span>LLM TRACING</span>
+            <span>RAG MONITORING</span>
+            <span>SLOS</span>
+            <span>DRIFT DETECTION</span>
+            <span>DASHBOARDS</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (1301 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> exercise.md</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (11 modules)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Metrics, Tracing, Alerts, Drift
+          <code>app/metrics.py | app/tracer.py | app/rag_monitor.py | app/drift_detector.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 11 -->
+      <div class="module-card" data-category="production" id="day11">
+        <div class="module-header">
+          <span class="module-num">11</span>
+          <span class="module-tag">PRODUCTION</span>
+        </div>
+        <h3>SECURITY & GOVERNANCE</h3>
+        <div class="module-body">
+          <p>Prompt injection, tool/agent security, PII detection, data leakage, model risk, responsible AI, compliance (NIST, SOC 2, EU AI Act).</p>
+          <div class="module-topics">
+            <span>PROMPT INJECTION</span>
+            <span>PII DETECTION</span>
+            <span>AUDIT LOGGING</span>
+            <span>COMPLIANCE</span>
+            <span>GOVERNANCE</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (1287 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> threat-model.md</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (9 modules + pipelines)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Auth, Prompt Guard, Compliance
+          <code>app/prompt_guard.py | app/data_classifier.py | app/audit_logger.py</code>
+        </div>
+      </div>
+
+      <!-- DAY 12 -->
+      <div class="module-card" data-category="production" id="day12">
+        <div class="module-header">
+          <span class="module-num">12</span>
+          <span class="module-tag">PRODUCTION</span>
+        </div>
+        <h3>BUSINESS ALIGNMENT</h3>
+        <div class="module-body">
+          <p>ROI calculation (2048% example), use case prioritization, architecture portfolio, executive briefs, architecture review, 30-day plan.</p>
+          <div class="module-topics">
+            <span>ROI</span>
+            <span>PORTFOLIO</span>
+            <span>EXECUTIVE BRIEFS</span>
+            <span>ARCHITECTURE REVIEW</span>
+            <span>30-DAY PLAN</span>
+          </div>
+        </div>
+        <div class="module-files">
+          <div class="file-row"><span class="file-icon">📄</span> notes.md (769 lines)</div>
+          <div class="file-row"><span class="file-icon">📄</span> portfolio-structure.md</div>
+          <div class="file-row"><span class="file-icon">📁</span> sample-app/ (9 modules + pipelines)</div>
+        </div>
+        <div class="module-app">
+          <strong>APP:</strong> Portfolio Manager & Cost Model
+          <code>app/portfolio.py | app/cost_model.py | app/executive_brief.py | app/review.py</code>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools" class="section">
+    <div class="section-header">
+      <h2>OPEN SOURCE AI TOOLS</h2>
+      <p class="section-sub">50+ TOOLS CURATED BY CATEGORY</p>
+    </div>
+    <div class="tools-grid">
+
+      <div class="tool-category">
+        <h3>LLM FRAMEWORKS</h3>
+        <ul>
+          <li><strong>LangChain</strong> — LLM app framework</li>
+          <li><strong>LlamaIndex</strong> — Data framework for LLMs</li>
+          <li><strong>DSPy</strong> — Programming framework for AI pipelines</li>
+          <li><strong>Haystack</strong> — End-to-end LLM framework</li>
+          <li><strong>LiteLLM</strong> — Unified interface for 100+ providers</li>
+        </ul>
+      </div>
+
+      <div class="tool-category">
+        <h3>VECTOR DATABASES</h3>
+        <ul>
+          <li><strong>Qdrant</strong> — High-performance vector search</li>
+          <li><strong>Chroma</strong> — Embedding database</li>
+          <li><strong>Milvus</strong> — Vector database for AI</li>
+          <li><strong>Weaviate</strong> — Vector search engine</li>
+          <li><strong>pgvector</strong> — PostgreSQL vector search</li>
+        </ul>
+      </div>
+
+      <div class="tool-category">
+        <h3>MODEL SERVING</h3>
+        <ul>
+          <li><strong>vLLM</strong> — High-throughput LLM serving</li>
+          <li><strong>TGI</strong> — HuggingFace LLM serving</li>
+          <li><strong>Ollama</strong> — Run LLMs locally</li>
+          <li><strong>Ray Serve</strong> — Scalable model serving</li>
+          <li><strong>llama.cpp</strong> — LLaMA in C++</li>
+        </ul>
+      </div>
+
+      <div class="tool-category">
+        <h3>RAG & ORCHESTRATION</h3>
+        <ul>
+          <li><strong>LangGraph</strong> — Stateful multi-actor apps</li>
+          <li><strong>AutoGen</strong> — Multi-agent framework</li>
+          <li><strong>CrewAI</strong> — AI agent orchestration</li>
+          <li><strong>Dify</strong> — LLM app platform</li>
+          <li><strong>Langflow</strong> — Visual agent builder</li>
+        </ul>
+      </div>
+
+      <div class="tool-category">
+        <h3>OBSERVABILITY</h3>
+        <ul>
+          <li><strong>Arize Phoenix</strong> — LLM observability</li>
+          <li><strong>Langfuse</strong> — LLM engineering platform</li>
+          <li><strong>Helicone</strong> — LLM proxy monitoring</li>
+          <li><strong>Prometheus</strong> — Monitoring toolkit</li>
+          <li><strong>Grafana</strong> — Analytics & monitoring</li>
+        </ul>
+      </div>
+
+      <div class="tool-category">
+        <h3>EVALUATION</h3>
+        <ul>
+          <li><strong>Ragas</strong> — RAG evaluation</li>
+          <li><strong>DeepEval</strong> — LLM evaluation</li>
+          <li><strong>TruLens</strong> — LLM experiment tracking</li>
+          <li><strong>Promptfoo</strong> — LLM prompt evaluation</li>
+        </ul>
+      </div>
+
+      <div class="tool-category">
+        <h3>SECURITY</h3>
+        <ul>
+          <li><strong>Guardrails AI</strong> — LLM output validation</li>
+          <li><strong>Presidio</strong> — Data anonymization</li>
+          <li><strong>NeMo Guardrails</strong> — LLM safetyrails</li>
+          <li><strong>Rebuff</strong> — Prompt injection detector</li>
+        </ul>
+      </div>
+
+      <div class="tool-category">
+        <h3>MLOPS</h3>
+        <ul>
+          <li><strong>MLflow</strong> — ML lifecycle management</li>
+          <li><strong>Kubeflow</strong> — ML for Kubernetes</li>
+          <li><strong>DVC</strong> — Data version control</li>
+          <li><strong>ZenML</strong> — MLOps pipelines</li>
+          <li><strong>Feast</strong> — Feature store</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section id="architecture" class="section section-dark">
+    <div class="section-header">
+      <h2>ARCHITECTURE DOCUMENTATION</h2>
+      <p class="section-sub">5 DIAGRAM TYPES FOR THE ENTERPRISE AI KNOWLEDGE ASSISTANT</p>
+    </div>
+    <div class="arch-grid">
+      <div class="arch-card">
+        <h3>CONTEXT DIAGRAM</h3>
+        <p>System boundaries, actors (Employee, HR, IT Admin, Security), external integrations (SSO, Model APIs, Vector DB, Monitoring)</p>
+        <code>architecture/context-diagram/</code>
+      </div>
+      <div class="arch-card">
+        <h3>LOGICAL ARCHITECTURE</h3>
+        <p>4 layers: API, AI Gateway, Application, Model. Data stores: Vector DB, PostgreSQL, Redis, Elasticsearch, S3</p>
+        <code>architecture/logical-architecture/</code>
+      </div>
+      <div class="arch-card">
+        <h3>DEPLOYMENT</h3>
+        <p>AWS production: WAF → CloudFront → ALB → EKS. GPU nodes (g5, p4d). Managed RDS, ElastiCache, S3</p>
+        <code>architecture/deployment-architecture/</code>
+      </div>
+      <div class="arch-card">
+        <h3>DATA FLOW</h3>
+        <p>Ingestion (chunking → embedding → vector DB), Query (validation → retrieval → reranking → LLM), Agent flow</p>
+        <code>architecture/data-flow/</code>
+      </div>
+      <div class="arch-card">
+        <h3>SECURITY ARCHITECTURE</h3>
+        <p>WAF → API GW → AuthN/AuthZ → AI Gateway → RAG permissions → Agent tool auth → PII detection → Audit</p>
+        <code>architecture/security-architecture/</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPSTONE -->
+  <section id="capstone" class="section">
+    <div class="section-header">
+      <h2>CAPSTONE PROJECT</h2>
+      <p class="section-sub">REFERENCE ARCHITECTURE WITH 7 ARCHITECTURE DECISION RECORDS</p>
+    </div>
+    <div class="capstone-grid">
+      <div class="capstone-adr">
+        <h3>ADRS</h3>
+        <div class="adr-list">
+          <div class="adr-item"><span class="adr-num">001</span> RAG for Knowledge Retrieval</div>
+          <div class="adr-item"><span class="adr-num">002</span> Multi-Agent Orchestration</div>
+          <div class="adr-item"><span class="adr-num">003</span> Model Gateway + Provider Abstraction</div>
+          <div class="adr-item"><span class="adr-num">004</span> Qdrant Vector Database</div>
+          <div class="adr-item"><span class="adr-num">005</span> Semantic Caching</div>
+          <div class="adr-item"><span class="adr-num">006</span> Kubernetes Orchestration</div>
+          <div class="adr-item"><span class="adr-num">007</span> OpenTelemetry Observability</div>
+        </div>
+      </div>
+      <div class="capstone-docs">
+        <h3>DELIVERABLES</h3>
+        <div class="doc-list">
+          <div class="doc-item">✓ Architecture (12 components, tech + owner)</div>
+          <div class="doc-item">✓ Requirements (Functional + Non-Functional)</div>
+          <div class="doc-item">✓ Business Case (ROI analysis)</div>
+          <div class="doc-item">✓ Cost Model (Detailed breakdown + scaling)</div>
+          <div class="doc-item">✓ Observability (Dashboards, SLOs, alerts)</div>
+          <div class="doc-item">✓ Threat Model (12 threats + mitigations)</div>
+        </div>
+        <div class="capstone-perf">
+          <h4>PERFORMANCE TARGETS</h4>
+          <div class="perf-row"><span>p50 latency</span><span>&lt; 1s</span></div>
+          <div class="perf-row"><span>p95 latency</span><span>&lt; 2s</span></div>
+          <div class="perf-row"><span>p99 latency</span><span>&lt; 5s</span></div>
+          <div class="perf-row"><span>Cache hit rate</span><span>30-40%</span></div>
+          <div class="perf-row"><span>Simple query bypass</span><span>80%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICKSTART -->
+  <section id="quickstart" class="section section-dark">
+    <div class="section-header">
+      <h2>QUICK START</h2>
+      <p class="section-sub">5-MINUTE SETUP — PICK YOUR PATH</p>
+    </div>
+    <div class="quick-grid">
+      <div class="quick-card">
+        <div class="quick-num">01</div>
+        <h3>LOCAL LLM</h3>
+        <p>Run models on your machine with Ollama</p>
+        <pre class="code-block">ollama pull llama3.2
+ollama run llama3.2</pre>
+        <span class="quick-diff">EASIEST</span>
+      </div>
+      <div class="quick-card">
+        <div class="quick-num">02</div>
+        <h3>RAG PIPELINE</h3>
+        <p>Build document Q&A with Chroma + LangChain</p>
+        <pre class="code-block">pip install langchain chromadb openai
+# Load docs → split → embed → query</pre>
+        <span class="quick-diff">RECOMMENDED</span>
+      </div>
+      <div class="quick-card">
+        <div class="quick-num">03</div>
+        <h3>AI AGENT</h3>
+        <p>Create tool-using agent with LangGraph</p>
+        <pre class="code-block">pip install langgraph langchain-openai
+# Define tools → build graph → run</pre>
+        <span class="quick-diff">ADVANCED</span>
+      </div>
+    </div>
+    <div class="learning-path">
+      <h3>4-WEEK LEARNING PATH</h3>
+      <div class="path-grid">
+        <div class="path-week">
+          <h4>WEEK 1</h4>
+          <p>Foundations</p>
+          <ul>
+            <li>Set up Ollama</li>
+            <li>Build first chatbot</li>
+            <li>Understand prompts & chains</li>
+          </ul>
+        </div>
+        <div class="path-week">
+          <h4>WEEK 2</h4>
+          <p>RAG & Vector DBs</p>
+          <ul>
+            <li>Learn embeddings</li>
+            <li>Set up ChromaDB</li>
+            <li>Build document Q&A</li>
+          </ul>
+        </div>
+        <div class="path-week">
+          <h4>WEEK 3</h4>
+          <p>Agents & Tools</p>
+          <ul>
+            <li>ReAct pattern</li>
+            <li>Agent with tool use</li>
+            <li>Multi-agent frameworks</li>
+          </ul>
+        </div>
+        <div class="path-week">
+          <h4>WEEK 4</h4>
+          <p>Production</p>
+          <ul>
+            <li>Add evaluation</li>
+            <li>Implement observability</li>
+            <li>Deploy with Docker</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>AI ARCHITECT 2026</h4>
+        <p>From building AI features to designing production-ready AI systems.</p>
+      </div>
+      <div class="footer-col">
+        <h4>RESOURCES</h4>
+        <ul>
+          <li><a href="https://github.com/hacrex/AI-Architect-2026">GitHub Repo</a></li>
+          <li><a href="https://github.com/hacrex/AI-Architect-2026/blob/main/open-source-ai/README.md">Open Source Tools</a></li>
+          <li><a href="https://github.com/hacrex/AI-Architect-2026/blob/main/open-source-ai/QUICKSTART.md">Quickstart Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>LEARNING</h4>
+        <ul>
+          <li><a href="https://www.deeplearning.ai/short-courses/">DeepLearning.AI</a></li>
+          <li><a href="https://fullstackdeeplearning.com/llmops/">LLMOps Bootcamp</a></li>
+          <li><a href="https://www.langchain.com/">LangChain Docs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>BUILT WITH INTENTION. NO JAVASCRIPT FRAMEWORKS. JUST HTML, CSS, AND STRUCTURE.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
