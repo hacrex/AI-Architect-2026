@@ -150,7 +150,7 @@
     <div class="modules-grid" id="modulesGrid">
 
       <!-- DAY 01 -->
-      <div class="module-card" data-category="foundation" id="day01">
+      <div class="module-card" data-category="foundation" id="day01" data-notes="01-foundations/notes.md" data-exercise="01-foundations/exercise.md">
         <div class="module-header">
           <span class="module-num">01</span>
           <span class="module-tag">FOUNDATION</span>
@@ -178,7 +178,7 @@
       </div>
 
       <!-- DAY 02 -->
-      <div class="module-card" data-category="foundation" id="day02">
+      <div class="module-card" data-category="foundation" id="day02" data-notes="02-ai-ml/notes.md" data-exercise="02-ai-ml/exercise.md">
         <div class="module-header">
           <span class="module-num">02</span>
           <span class="module-tag">FOUNDATION</span>
@@ -206,7 +206,7 @@
       </div>
 
       <!-- DAY 03 -->
-      <div class="module-card" data-category="technical" id="day03">
+      <div class="module-card" data-category="technical" id="day03" data-notes="03-llm-engineering/notes.md" data-exercise="03-llm-engineering/exercise.md">
         <div class="module-header">
           <span class="module-num">03</span>
           <span class="module-tag">TECHNICAL</span>
@@ -234,7 +234,7 @@
       </div>
 
       <!-- DAY 04 -->
-      <div class="module-card" data-category="technical" id="day04">
+      <div class="module-card" data-category="technical" id="day04" data-notes="04-ai-infrastructure/notes.md" data-exercise="04-ai-infrastructure/exercise.md">
         <div class="module-header">
           <span class="module-num">04</span>
           <span class="module-tag">TECHNICAL</span>
@@ -262,7 +262,7 @@
       </div>
 
       <!-- DAY 05 -->
-      <div class="module-card" data-category="platform" id="day05">
+      <div class="module-card" data-category="platform" id="day05" data-notes="05-data-architecture/notes.md" data-exercise="05-data-architecture/exercise.md">
         <div class="module-header">
           <span class="module-num">05</span>
           <span class="module-tag">PLATFORM</span>
@@ -290,7 +290,7 @@
       </div>
 
       <!-- DAY 06 -->
-      <div class="module-card" data-category="platform" id="day06">
+      <div class="module-card" data-category="platform" id="day06" data-notes="06-mlops-platform/notes.md" data-exercise="06-mlops-platform/exercise.md">
         <div class="module-header">
           <span class="module-num">06</span>
           <span class="module-tag">PLATFORM</span>
@@ -318,7 +318,7 @@
       </div>
 
       <!-- DAY 07 -->
-      <div class="module-card" data-category="technical" id="day07">
+      <div class="module-card" data-category="technical" id="day07" data-notes="07-system-architecture/notes.md" data-exercise="07-system-architecture/exercise.md">
         <div class="module-header">
           <span class="module-num">07</span>
           <span class="module-tag">TECHNICAL</span>
@@ -346,7 +346,7 @@
       </div>
 
       <!-- DAY 08 -->
-      <div class="module-card" data-category="platform" id="day08">
+      <div class="module-card" data-category="platform" id="day08" data-notes="08-technology-decisions/notes.md" data-exercise="08-technology-decisions/exercise.md">
         <div class="module-header">
           <span class="module-num">08</span>
           <span class="module-tag">PLATFORM</span>
@@ -374,7 +374,7 @@
       </div>
 
       <!-- DAY 09 -->
-      <div class="module-card" data-category="production" id="day09">
+      <div class="module-card" data-category="production" id="day09" data-notes="09-scale-finops/notes.md" data-exercise="09-scale-finops/exercise.md">
         <div class="module-header">
           <span class="module-num">09</span>
           <span class="module-tag">PRODUCTION</span>
@@ -402,7 +402,7 @@
       </div>
 
       <!-- DAY 10 -->
-      <div class="module-card" data-category="production" id="day10">
+      <div class="module-card" data-category="production" id="day10" data-notes="10-observability/notes.md" data-exercise="10-observability/exercise.md">
         <div class="module-header">
           <span class="module-num">10</span>
           <span class="module-tag">PRODUCTION</span>
@@ -430,7 +430,7 @@
       </div>
 
       <!-- DAY 11 -->
-      <div class="module-card" data-category="production" id="day11">
+      <div class="module-card" data-category="production" id="day11" data-notes="11-security-governance/notes.md" data-exercise="11-security-governance/exercise.md">
         <div class="module-header">
           <span class="module-num">11</span>
           <span class="module-tag">PRODUCTION</span>
@@ -458,7 +458,7 @@
       </div>
 
       <!-- DAY 12 -->
-      <div class="module-card" data-category="production" id="day12">
+      <div class="module-card" data-category="production" id="day12" data-notes="12-business-architecture/notes.md" data-exercise="12-business-architecture/exercise.md">
         <div class="module-header">
           <span class="module-num">12</span>
           <span class="module-tag">PRODUCTION</span>
@@ -764,6 +764,23 @@ ollama run llama3.2</pre>
       <p>BUILT WITH INTENTION. NO JAVASCRIPT FRAMEWORKS. JUST HTML, CSS, AND STRUCTURE.</p>
     </div>
   </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">MODULE</h2>
+        <button class="modal-close" id="modalClose">✕</button>
+      </div>
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-tab="notes">NOTES</button>
+        <button class="modal-tab" data-tab="exercise">EXERCISE</button>
+      </div>
+      <div class="modal-content" id="modalContent">
+        <div class="modal-loading">LOADING...</div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
